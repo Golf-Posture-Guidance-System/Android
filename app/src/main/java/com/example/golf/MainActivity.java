@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static Context mContext;
     CognitoCachingCredentialsProvider credentialsProvider;
     AmazonS3 s3;
+    int a;
     TransferUtility transferUtility;
-
     Button sendBtn, retryBtn;
     ImageButton playBtn;
     VideoView Videoview;
