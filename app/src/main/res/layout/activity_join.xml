@@ -155,6 +155,7 @@
                 android:textColor="#BDBDBD"
                 />
             <androidx.appcompat.widget.AppCompatButton
+                android:onClick="register"
                 android:layout_width="350dp"
                 android:layout_height="48dp"
                 android:layout_below="@+id/userPwd"
