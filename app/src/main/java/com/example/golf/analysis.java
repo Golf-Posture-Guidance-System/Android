@@ -26,14 +26,14 @@ public class analysis extends AppCompatActivity {
         pracBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Intent intent = new Intent(.this,login.class);
-                //startActivityForResult(intent, 2);
+                Intent intent = new Intent(analysis.this,PracticeNote.class);
+                startActivityForResult(intent, 2);
             }
         });
         detailBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Intent intent = new Intent(.this,login.class);
+                //Intent intent = new Intent(analysis.this,.class);
                 //startActivityForResult(intent, 2);
             }
         });

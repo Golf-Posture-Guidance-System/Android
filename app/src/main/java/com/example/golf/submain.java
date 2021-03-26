@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class submain extends AppCompatActivity {
-    Button loginBtn, joinBtn,findPwd;
+    private Button loginBtn, joinBtn,findPwd;
     public static Context mainActivityContext;
     static String postUrl = "http://54.180.114.13:5000/";
     @Override
