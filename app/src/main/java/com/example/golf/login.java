@@ -39,7 +39,7 @@ public class login extends AppCompatActivity {
         String password = passwordView.getText().toString().trim();
 
         if (userid.length() == 0 || password.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Something is wrong. Please check your inputs.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "아이디와 패스워드를 입력하세요.", Toast.LENGTH_LONG).show();
             return;
         }
         else {

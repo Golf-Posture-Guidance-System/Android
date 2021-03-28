@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/camBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스윙촬영" />
+        <Button
+            android:id="@+id/vidloadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="엘범서 불러오기" />
+        <Button
+            android:id="@+id/noteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="연습노트"/>
+    </LinearLayout>
+
+
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_back"
+        />
+
+
+</RelativeLayout>

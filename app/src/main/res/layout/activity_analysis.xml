@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="343dp"
+        android:layout_height="350dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="104dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:outlineProvider="background"
+        android:background="@drawable/ic_launcher_background">
+    </ImageView>
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="예시입니다. 헤드업이 있습니다. 다리를 펴세요 "/>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Score = 80 "/>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/pracNoteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="연습노트" />
+        <Button
+            android:id="@+id/detailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="분석 자세히" />
+
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_back"
+        />
+
+
+</RelativeLayout>

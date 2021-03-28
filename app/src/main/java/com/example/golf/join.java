@@ -44,7 +44,7 @@ public class join extends AppCompatActivity {
         String userpwd = userpwdView.getText().toString().trim();
 
         if (usernameView.length() == 0 || userid.length() == 0 || useremail.length() == 0 || userpwd.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Something is wrong. Please check your inputs.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "모두 입력해주세요.", Toast.LENGTH_LONG).show();
         } else {
             JSONObject registrationForm = new JSONObject();
             try {

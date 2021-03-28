@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class submain extends AppCompatActivity {
-    Button loginBtn, joinBtn;
+    private Button loginBtn, joinBtn,findPwd;
     public static Context mainActivityContext;
     static String postUrl = "http://54.180.114.13:5000/";
     @Override
@@ -22,6 +22,8 @@ public class submain extends AppCompatActivity {
         setContentView(R.layout.activity_submain);
         loginBtn = (Button)findViewById(R.id.loginBtn);
         joinBtn = (Button)findViewById(R.id.joinBtn);
+        findPwd =(Button)findViewById(R.id.findPwd);
+
         ActivityCompat.requestPermissions(submain.this, new String[]{Manifest.permission.INTERNET}, 0);
         mainActivityContext = this;
         loginBtn.setOnClickListener(new View.OnClickListener(){
@@ -37,6 +39,15 @@ public class submain extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(submain.this,join.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(submain.this,analysis.class);
                 startActivity(intent);
                 finish();
             }
