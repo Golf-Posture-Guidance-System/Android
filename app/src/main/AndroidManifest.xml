@@ -19,7 +19,6 @@
         android:theme="@style/Theme.Golf"
         android:windowSoftInputMode="adjustResize"
         android:usesCleartextTraffic="true">
-        >
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splash">
+        <activity android:name=".splash"/>
 
-        </activity>
         <activity android:name=".submain" />
 
         <activity android:name=".login" />
