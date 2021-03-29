@@ -8,4 +8,10 @@
     <string name="email">Email</string>
     <string name="pwd">Password</string>
     <string name="show">Show</string>
+    <string name="cameraSwing">스윙 촬영 분석</string>
+    <string name="detail1">스윙 직접 찍어 분석하기</string>
+    <string name="gallery">갤러리에서 불러오기</string>
+    <string name="detail2">원하는 영상의 스윙 분석하기</string>
+    <string name="note">스윙 연습 노트</string>
+    <string name="detail3">과거 스윙 분석 모아보기</string>
 </resources>
