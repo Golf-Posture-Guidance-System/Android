@@ -159,7 +159,7 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
         startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
     }
 
-    private void cameraIntent() {
+    public void cameraIntent() {
         startActivityForResult(new Intent(splash.this,camera.class), REQUEST_CAMERA);
     }
 

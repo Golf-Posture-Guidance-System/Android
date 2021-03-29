@@ -95,7 +95,7 @@ public class login extends AppCompatActivity {
                             Log.d("LOGIN", "Response from the server : " + loginResponseString);
                             if (loginResponseString.equals("success")) {
                                 Log.d("LOGIN", "Successful Login");
-                                Intent intent = new Intent(login.this,splash.class);
+                                Intent intent = new Intent(login.this,MainMenu.class);
                                 startActivity(intent);
                                 finish();
                             } else if (loginResponseString.equals("failure")) {
