@@ -10,8 +10,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,13 +17,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Golf"
-        android:windowSoftInputMode="adjustResize"
-        android:usesCleartextTraffic="true">
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
-        <activity android:name=".PracticeNote"/>
-        <activity android:name=".MainMenu" />
+        <activity android:name=".swing_record">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PracticeNote" />
+        <activity android:name=".MainMenu" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,12 +35,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splash"/>
-        <activity android:name=".submain"/>
-        <activity android:name=".login"/>
+        <activity android:name=".splash" />
+        <activity android:name=".submain" />
+        <activity android:name=".login" />
         <activity android:name=".join" />
-        <activity android:name=".camera"/>
+        <activity android:name=".camera" />
         <activity android:name=".analysis" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
