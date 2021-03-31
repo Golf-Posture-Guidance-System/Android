@@ -30,7 +30,8 @@ public class submain extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(submain.this,login.class);
-                startActivityForResult(intent, 2);
+                startActivity(intent);
+                finish();
             }
 
         });
@@ -53,16 +54,5 @@ public class submain extends AppCompatActivity {
             }
         });
 
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2) { // Login
-            Toast.makeText(this.getApplicationContext(),"로그인 되었습니다.", Toast.LENGTH_SHORT).show();
-            finish();
-        } else {
-            Toast.makeText(this.getApplicationContext(),"입력란을 다시 확인하세요.", Toast.LENGTH_SHORT).show();
-            finish();
-        }
     }
 }

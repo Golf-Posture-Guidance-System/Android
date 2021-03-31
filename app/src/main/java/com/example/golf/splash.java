@@ -44,9 +44,8 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
     Uri VideoUri;
     String videopath;
     private Uri mImageUri;
-    private int PICTURE_CHOICE = 1;
-    private int REQUEST_CAMERA = 2;
-    private int SELECT_FILE = 3;
+    private int REQUEST_CAMERA;
+    private int SELECT_FILE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +70,12 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
         s3.setEndpoint("s3.ap-northeast-2.amazonaws.com");
 
         transferUtility = new TransferUtility(s3, getApplicationContext());
-
+        SELECT_FILE = getIntent().getIntExtra("PICTURE_CHOICE",5);
+        REQUEST_CAMERA = getIntent().getIntExtra("REQUEST_CAMERA",5);
+        if(SELECT_FILE == 3)
+            galleryIntent();
+        if(REQUEST_CAMERA == 2)
+            cameraIntent();
 
     }
 
@@ -84,8 +88,9 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
                 double bytes = f.length();
                 double kilobytes = (bytes/1024);
                 double megabytes = (kilobytes/1024);
-                if(megabytes>1){
+                if(megabytes>100){
                     Toast.makeText(this.getApplicationContext(),"파일 용량이 너무 큽니다.", Toast.LENGTH_SHORT).show();
+                    break;
                 }
                 else {
                     TransferObserver observer = transferUtility.upload(
@@ -95,6 +100,7 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
                     );
                     break;
                 }
+
             case R.id.retry:
                 selectImage();
                 break;
@@ -166,7 +172,6 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == SELECT_FILE) {
                 Log.d(TAG, "onActivityResult, SELECT_FILE");

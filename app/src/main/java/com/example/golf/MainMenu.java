@@ -5,12 +5,12 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainMenu extends AppCompatActivity {
-    public static Context mcontext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,18 +18,21 @@ public class MainMenu extends AppCompatActivity {
         CardView cameraview,galleryview;
         cameraview = (CardView) findViewById(R.id.cameraSwing);
         galleryview = (CardView) findViewById(R.id.gallery);
-        mcontext = this;
         cameraview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((splash)MainMenu.mcontext).cameraIntent();
+                Intent intent = new Intent(MainMenu.this,splash.class);
+                intent.putExtra("REQUEST_CAMERA",2);
+                startActivity(intent);
                 finish();
             }
         });
         galleryview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((splash)MainMenu.mcontext).galleryIntent();
+                Intent intent = new Intent(MainMenu.this,splash.class);
+                intent.putExtra("PICTURE_CHOICE",3);
+                startActivity(intent);
                 finish();
             }
         });
@@ -46,4 +49,5 @@ public class MainMenu extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
 
     }
+
 }
