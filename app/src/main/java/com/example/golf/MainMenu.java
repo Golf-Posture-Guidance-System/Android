@@ -7,14 +7,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-
 import com.google.android.material.navigation.NavigationView;
 
 public class MainMenu extends AppCompatActivity {
-    final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,34 +36,18 @@ public class MainMenu extends AppCompatActivity {
                 finish();
             }
         });
-        NavigationView navigationView = findViewById(R.id.navView);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+
+        findViewById(R.id.navBtn).setOnClickListener(new View.OnClickListener(){
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                menuItem.setChecked(true);
-                drawerLayout.closeDrawers();
-
-                int id = menuItem.getItemId();
-
-                if(id == R.id.Logout){
-                    Intent intent = new Intent(MainMenu.this,splash.class);
-                    intent.putExtra("REQUEST_CAMERA",2);
-                    startActivity(intent);
-                    finish();
-                }
-
-                return true;
+            public void onClick(View view){
+                drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        NavigationView navigationView = findViewById(R.id.navView);
+        navigationView.setItemIconTintList(null);
+
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.navBtn:{ // 왼쪽 상단 버튼 눌렀을 때
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }
