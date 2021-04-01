@@ -11,9 +11,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.MediaController;
@@ -30,7 +30,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 
 import java.io.File;
 
-public class splash extends AppCompatActivity implements View.OnClickListener{
+public class videoPreview extends AppCompatActivity implements View.OnClickListener{
     private String TAG = "MainActivity";
     public static Context mContext;
     CognitoCachingCredentialsProvider credentialsProvider;
@@ -50,14 +50,16 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_preview);
         mContext = this;
         sendBtn = (Button) findViewById(R.id.send);
         retryBtn = (Button) findViewById(R.id.retry);
-        Videoview = (VideoView) findViewById(R.id.video_card);
-        playBtn = (ImageButton) findViewById(R.id.Vidplay);
+        Videoview = (VideoView) findViewById(R.id.video_view);
+        playBtn = (ImageButton) findViewById(R.id.playBtn);
         sendBtn.setOnClickListener(this);
         retryBtn.setOnClickListener(this);
+
+        setClipToOutline(findViewById(R.id.video_view_container),true);
 
         credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
@@ -80,6 +82,10 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+    public void setClipToOutline(View view, boolean clipToOutline) {
+        view.setClipToOutline(clipToOutline);
+        view.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
+    }
 
     @Override
     public void onClick(View view) {
@@ -166,7 +172,7 @@ public class splash extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void cameraIntent() {
-        startActivityForResult(new Intent(splash.this,camera.class), REQUEST_CAMERA);
+        startActivityForResult(new Intent(videoPreview.this,camera.class), REQUEST_CAMERA);
     }
 
     @Override
