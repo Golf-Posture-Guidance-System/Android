@@ -14,4 +14,5 @@
     <string name="detail2">원하는 영상의 스윙 분석하기</string>
     <string name="note">스윙 연습 노트</string>
     <string name="detail3">과거 스윙 분석 모아보기</string>
+    <string name="videoPreview">위 영상으로\n분석하시겠습니까?</string>
 </resources>

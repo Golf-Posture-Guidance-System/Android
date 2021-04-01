@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,7 +25,7 @@ public class MainMenu extends AppCompatActivity {
         cameraview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this,splash.class);
+                Intent intent = new Intent(MainMenu.this, videoPreview.class);
                 intent.putExtra("REQUEST_CAMERA",2);
                 startActivity(intent);
                 finish();
@@ -34,7 +34,7 @@ public class MainMenu extends AppCompatActivity {
         galleryview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this,splash.class);
+                Intent intent = new Intent(MainMenu.this, videoPreview.class);
                 intent.putExtra("PICTURE_CHOICE",3);
                 startActivity(intent);
                 finish();
