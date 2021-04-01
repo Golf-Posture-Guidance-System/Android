@@ -7,8 +7,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -16,8 +20,8 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    NavigationView navigationView = findViewById(R.id.navView);
-    final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +29,10 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         CardView cameraview,galleryview;
         cameraview = (CardView) findViewById(R.id.cameraSwing);
         galleryview = (CardView) findViewById(R.id.gallery);
+        navigationView = findViewById(R.id.navView);
+        drawerLayout = findViewById(R.id.drawerLayout);
         navigationView.setItemIconTintList(null);
-        navigationView.setNavigationItemSelectedListener(MainMenu.this); // 리스너 설정
+        navigationView.setNavigationItemSelectedListener(MainMenu.this);
         cameraview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,16 +57,46 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-        navigationView.setNavigationItemSelectedListener(MainMenu.this);
 
     }
-    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation_drawer, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        //noinspection SimplifiableIfStatement
+
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.Logout) {
-            Toast.makeText(MainMenu.this,"인터넷 연결을 확인하세요.", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            final CharSequence[] items = {"예", "취소",
+                    };
+            builder1.setTitle("로그아웃 하시겠습니까?");
+            builder1.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    if (items[item].equals("예")) {
+                        Intent intent = new Intent(MainMenu.this, submain.class);
+                        startActivity(intent);
+                        finish();
+                    } else if (items[item].equals("취소")) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+            AlertDialog alertDialog2 = builder1.create();
+            builder1.show();
+
         }
 
         //Drawer를 닫기...
@@ -68,4 +104,5 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
 
         return true;
     }
+
 }
