@@ -30,6 +30,14 @@ public class analysis extends AppCompatActivity {
                 startActivityForResult(intent, 2);
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(analysis.this,videoPreview.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         detailBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

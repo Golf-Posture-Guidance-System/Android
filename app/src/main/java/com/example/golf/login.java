@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -26,9 +27,21 @@ import okhttp3.Response;
 
 public class login extends AppCompatActivity {
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+        ImageButton backBtn;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        backBtn =(ImageButton) findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent = new Intent(login.this,submain.class);
+               startActivity(intent);
+               finish();
+            }
+        });
     }
 
     public void submit(View v) {

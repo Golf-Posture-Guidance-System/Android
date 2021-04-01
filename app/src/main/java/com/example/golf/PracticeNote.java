@@ -2,6 +2,7 @@ package com.example.golf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 
 public class PracticeNote extends AppCompatActivity {
     private ImageButton addBtn;
+    ImageButton backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,16 @@ public class PracticeNote extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //여기에 버튼 클릭시 숨겨진 버튼 두개 보이게(엘범 불러오기 촬영하기) 코딩
+            }
+        });
+        backBtn =(ImageButton) findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PracticeNote.this,MainMenu.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

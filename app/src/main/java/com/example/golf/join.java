@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +27,23 @@ import okhttp3.Response;
 
 public class join extends AppCompatActivity {
 
+    ImageButton backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
+        backBtn =(ImageButton) findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(join.this,submain.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
 
     public void register(View v) {
         EditText usernameView = findViewById(R.id.userName);
