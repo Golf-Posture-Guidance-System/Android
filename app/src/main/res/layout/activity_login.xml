@@ -93,6 +93,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="350dp"
         android:layout_height="48dp"
+        android:onClick="submit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_dark"
