@@ -41,8 +41,8 @@ public class analysis extends AppCompatActivity {
         detailBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Intent intent = new Intent(analysis.this,.class);
-                //startActivityForResult(intent, 2);
+                Intent intent = new Intent(analysis.this,analysis_detail.class);
+                startActivityForResult(intent, 2);
             }
         });
         backBtn.setOnClickListener(new View.OnClickListener() {
