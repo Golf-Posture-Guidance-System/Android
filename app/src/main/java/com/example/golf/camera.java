@@ -27,7 +27,7 @@ public class camera extends AppCompatActivity implements SurfaceHolder.Callback{
    @Override
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_swing_record);
+       setContentView(R.layout.camera);
        final MediaController mediaController =
                new MediaController(this);
        setContentView(R.layout.camera);

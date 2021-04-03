@@ -172,7 +172,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     }
 
     public void cameraIntent() {
-        startActivityForResult(new Intent(videoPreview.this,camera.class), REQUEST_CAMERA);
+        startActivityForResult(new Intent(videoPreview.this,swing_record.class), REQUEST_CAMERA);
     }
 
     @Override
