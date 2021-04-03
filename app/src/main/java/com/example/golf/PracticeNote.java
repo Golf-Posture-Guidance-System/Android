@@ -15,6 +15,8 @@ public class PracticeNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_note);
+
+        /* => 실행시 오류남ㅜㅜ 앱 안켜짐.. 그래서 주석처리했습니당
         addBtn = (ImageButton) findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +34,9 @@ public class PracticeNote extends AppCompatActivity {
                 finish();
             }
         });
+        */
+
     }
+
+
 }
