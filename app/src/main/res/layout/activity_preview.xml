@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/videoback"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="500dp"
         android:background="@drawable/ic_videoback"/>
 
     <LinearLayout
@@ -46,20 +46,20 @@
 
     <FrameLayout
         android:id="@+id/video_view_container"
-        android:layout_width="343dp"
-        android:layout_height="200dp"
+        android:layout_width="220dp"
+        android:layout_height="380dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="80dp"
         android:background="@drawable/rounded_video_background"
-        android:outlineProvider="background">
+        >
 
         <VideoView
             android:id="@+id/video_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="220dp"
+            android:layout_height="380dp"
             android:layout_gravity="center"
-            android:clipChildren="true"
+            android:outlineProvider="background"
             />
         <ImageButton
             android:id="@+id/playBtn"
