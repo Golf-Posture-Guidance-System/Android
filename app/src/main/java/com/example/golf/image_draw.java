@@ -65,14 +65,14 @@ public class image_draw extends AppCompatActivity {
 
             Resources r = getResources();
             BitmapDrawable bitmapDrawable = (BitmapDrawable)r.getDrawable(R.drawable.cutiegirl2);
-            bitmapDrawable.setBounds(0,0,150,150);
+            bitmapDrawable.setBounds(0,0,350,560);
             Bitmap bitmap = bitmapDrawable.getBitmap();
 
             //Rect rectangle = new Rect(20,30,100,100);
-            canvas.drawBitmap(bitmap,100,100,null);
+            canvas.drawBitmap(bitmap,200,500,null);
 
-
-            canvas.drawRect(10,10,100,100,paint);
+            paint.setStrokeWidth(3);
+            canvas.drawLine(300,700,500,780,paint);
 
 
 
