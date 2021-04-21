@@ -2,6 +2,7 @@ package com.example.golf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -26,12 +27,16 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class login extends AppCompatActivity {
+     String userid ;
+     String password ;
+    public static Context context_main;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         ImageButton backBtn;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        context_main = this;
         backBtn =(ImageButton) findViewById(R.id.backBtn);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +52,8 @@ public class login extends AppCompatActivity {
     public void submit(View v) {
         EditText useridView = findViewById(R.id.userId);
         EditText passwordView = findViewById(R.id.userPwd);
-
-        String userid = useridView.getText().toString().trim();
-        String password = passwordView.getText().toString().trim();
+        userid = useridView.getText().toString().trim();
+        password = passwordView.getText().toString().trim();
 
         if (userid.length() == 0 || password.length() == 0) {
             Toast.makeText(getApplicationContext(), "아이디와 패스워드를 입력하세요.", Toast.LENGTH_LONG).show();

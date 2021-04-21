@@ -1,7 +1,6 @@
 package com.example.golf;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,7 +27,19 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class videoPreview extends AppCompatActivity implements View.OnClickListener{
     private String TAG = "MainActivity";
@@ -46,12 +57,12 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     private Uri mImageUri;
     private int REQUEST_CAMERA;
     private int SELECT_FILE;
+    public static Context context_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
-        mContext = this;
         sendBtn = (Button) findViewById(R.id.send);
         retryBtn = (Button) findViewById(R.id.retry);
         Videoview = (VideoView) findViewById(R.id.video_view);
@@ -89,6 +100,8 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
+        String userid = ((login)login.context_main).userid;
         switch (view.getId()) {
             case R.id.send:
                 double bytes = f.length();
@@ -99,8 +112,20 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                     break;
                 }
                 else {
+                    JSONObject video = new JSONObject();
+                    try {
+                        video.put("subject", "video");
+                        video.put("userid", userid);
+                        video.put("URL", "https://golfapplication.s3.ap-northeast-2.amazonaws.com/" + userid + "/" + f.getName());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), video.toString());
+
+                    postRequest(submain.postUrl, body);
                     TransferObserver observer = transferUtility.upload(
-                            "golfapplication",
+                            "golfapplication" + "/" + userid,
                             f.getName(),
                             f
                     );
@@ -112,7 +137,48 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+    public void postRequest(String postUrl, RequestBody postBody) {
+        OkHttpClient client = new OkHttpClient();
 
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(postBody)
+                .header("Accept", "application/json")
+                .header("Content-Type", "application/json")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                // Cancel the post on failure.
+                call.cancel();
+                Log.d("FAIL", e.getMessage());
+
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(videoPreview.this,"인터넷 연결을 확인하세요.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+
+    }
     private void selectImage() {
 
         Log.d(TAG, "select Image");
