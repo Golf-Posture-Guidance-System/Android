@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class analysis_detail extends AppCompatActivity implements View.OnClickListener{
-    private Button pracBtn, analysisBtn;
+    private Button pracBtn, mainBtn;
     private Button poseBtn[] = new Button[7];
     private Integer [] RidBtn = {
             R.id.Btn1,R.id.Btn2,R.id.Btn3,R.id.Btn4,
@@ -24,7 +24,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_analysis_detail);
 
         pracBtn = (Button)findViewById(R.id.pracNoteBtn);
-        analysisBtn = (Button)findViewById(R.id.analysisBtn);
+        mainBtn = (Button)findViewById(R.id.backToMainBtn);
         for ( int i=0;i<7;i++) {
             poseBtn[i] = (Button) findViewById(RidBtn[i]);
             poseBtn[i].setOnClickListener(this);
@@ -37,10 +37,10 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 startActivityForResult(intent, 2);
             }
         });
-        analysisBtn.setOnClickListener(new View.OnClickListener() {
+        mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(analysis_detail.this,analysis.class);
+                Intent intent = new Intent(analysis_detail.this,MainMenu.class);
                 startActivityForResult(intent, 2);
             }
         });

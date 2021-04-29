@@ -7,109 +7,128 @@
     android:orientation="vertical"
     >
 
-
     <LinearLayout
+        android:id="@+id/first"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <ImageView
-            android:id = "@+id/poseimg"
-            android:layout_width="343dp"
-            android:layout_height="350dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="16dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="104dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:outlineProvider="background"
-            android:background="@drawable/ic_launcher_background">
-        </ImageView>
-        <TextView
-            android:id="@+id/commentText"
-            android:layout_width="300dp"
-            android:layout_height="30dp"
-            android:text=" 지피지기팁 : 좋은 어드래스 동작은 삼각형이 깨지지 않습니다."/>
-
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="300dp"
-            android:layout_height="30dp"
-            android:text="Score = 80 "
-            android:visibility="gone"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="top">
-        <Button
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="top|center_horizontal">
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="어드래스"/>
-        <Button
+            android:text="@string/address"
+            android:background="@drawable/background_transparent"/>
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="테이크어웨이" />
-        <Button
+            android:text="TakeAway"
+            android:background="@drawable/background_transparent"/>
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="탑스윙" />
-        <Button
-            android:id="@+id/Btn4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4" />
-        <Button
-            android:id="@+id/Btn5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5" />
-        <Button
-            android:id="@+id/Btn6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6" />
-        <Button
-            android:id="@+id/Btn7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="7" />
-
+            android:text="topswing"
+            android:background="@drawable/background_transparent"/>
 
 
 
     </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/second"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/first"
+    android:gravity="center_horizontal">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Down"
+        android:background="@drawable/background_transparent"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Impact"
+        android:background="@drawable/background_transparent"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Btn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Follow"
+        android:background="@drawable/background_transparent"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Btn7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="finish"
+        android:background="@drawable/background_transparent"/>
+
+
+</LinearLayout>
 
     <LinearLayout
+        android:id="@+id/golfTip"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom">
-    <Button
-        android:id="@+id/pracNoteBtn"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="연습노트" />
-    <Button
-        android:id="@+id/analysisBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="분석 결과" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/second">
+
+        <ImageView
+            android:id="@+id/poseimg"
+            android:layout_width="310dp"
+            android:layout_height="330dp"
+            android:background="@drawable/golf_image_border"/>
+
+        <TextView
+            android:layout_marginTop="22dp"
+            android:id="@+id/commentText"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/onyx"
+            android:textSize="18sp"
+            android:text="@string/tip"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/golfTip"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pracNoteBtn"
+                android:layout_width="130dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_green"
+                android:text="연습 노트"
+                android:textColor="@color/white"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/backToMainBtn"
+                android:layout_width="130dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_dark"
+                android:text="메인 메뉴"
+                android:textColor="@color/white"
+                android:layout_marginLeft="52dp"/>
+
+        </LinearLayout>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/backBtn"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/ic_back"
-        />
+
+
+
+
+
+
 
 
 </RelativeLayout>

@@ -4,58 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ImageView
-        android:layout_width="343dp"
-        android:layout_height="350dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="104dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:outlineProvider="background"
-        android:background="@drawable/ic_launcher_background">
-    </ImageView>
-    <TextView
-        android:id="@+id/comment"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:text="예시입니다. 헤드업이 있습니다. 다리를 펴세요 "/>
-
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:text="Score = 80 "/>
-</LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom">
-        <Button
-            android:id="@+id/pracNoteBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="연습노트" />
-        <Button
-            android:id="@+id/detailBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="분석 자세히" />
-
-
-
-    </LinearLayout>
-
+        android:layout_height="220dp"
+        android:background="@drawable/ic_analyze_back"/>
 
     <ImageButton
         android:id="@+id/backBtn"
@@ -67,6 +21,93 @@
         android:layout_marginLeft="20dp"
         android:background="@drawable/ic_back"
         />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="분석하기"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="66dp"
+        android:textSize="40sp"
+        android:textColor="@color/onyx"
+        android:textStyle="bold"/>
+    <ImageView
+        android:layout_width="310dp"
+        android:layout_height="330dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/golf_image_border" />
+
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:text="@string/example"
+        android:textColor="@color/onyx"
+        android:textSize="20sp"
+        android:layout_marginTop="22dp"
+        android:layout_gravity="center_horizontal"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp">
+
+        <TextView
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="27sp"
+            android:textColor="@color/green"
+            android:text="Score : "/>
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80"
+            android:textColor="@color/green"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="145dp"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="22dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/pracNoteBtn"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            android:background="@drawable/checkbutton"
+            android:text="연습 노트"
+            android:textColor="@color/white"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/detailBtn"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            android:background="@drawable/rounded_green"
+            android:text="자세히 보기"
+            android:textColor="@color/white"
+            android:layout_marginLeft="52dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
 
 
 </RelativeLayout>
