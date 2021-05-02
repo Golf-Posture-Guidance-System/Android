@@ -21,6 +21,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:windowSoftInputMode="adjustResize">
         <activity android:name=".analysis_detail">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".swing_record"/>
         <activity android:name=".PracticeNote" />

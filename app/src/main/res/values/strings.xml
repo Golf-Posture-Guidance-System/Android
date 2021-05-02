@@ -17,6 +17,16 @@
     <string name="videoPreview">위 영상으로\n분석하시겠습니까?</string>
     <string name="add">╋&#160;&#160;&#160;&#160;분석 추가하기</string>
     <string name="example">예시 : 허리를 좀 더 펴세요\n좀 더 노력하세요!</string>
-    <string name="address">Address</string>
     <string name="tip">GP지기 Tip : 좋은 어드래스 동작은\n삼각형이 깨지지 않습니다.</string>
+    <string name="address">어드레스 Tip : 이상적인 발의 너비는 양쪽 발 중앙이 어깨 라인과 일직선을 이룰 때 입니다.
+        오른쪽 어깨는 왼쪽 어깨보다 살짝 낮아야 합니다.</string>
+    <string name="takeAway">테이크 어웨이 Tip : 어드레스에서 취한 삼각형 모양을 유지한 채로 팔을 움직이세요.
+    이때, 왼쪽 팔은 쭉 펴야하며 손목이 위로 꺾이지 않도록 해야 합니다.</string>
+    <string name="top">탑 스윙 Tip : 허리를 지나치게 돌리지 않도록 유의하세요. 척추는 지면과 수직이 되어야 합니다.</string>
+    <string name="down">다운 스윙 Tip : 몸을 회전할 때, 엉덩이가 앞쪽으로 미끄러지면 안됩니다.척추를 따라 뒤로 회전하세요.
+    체중은 오른 쪽 발이 아닌 왼쪽 발에 두어야 합니다. 척추가 지나치게 기울어 지지 않도록 하세요.</string>
+    <string name="impact">임팩트 Tip : 왼쪽 무릎을 지나치게 꺾지 않도록 유의하세요. 손의 위치는 척추와 클럽헤드보다 왼쪽에 위치해야 합니다.</string>
+    <string name="followThru">팔로우스루 Tip : 척추와 왼쪽 다리가 쭉 펴진 채로 있어야 합니다. 왼쪽 다리에 무게를 두세요.</string>
+    <string name="finish">피니쉬 Tip : 헤드업이 주로 발생하는 자세입니다. 머리를 지나치게 들지 말고 시선은 공을 쳐다보세요. 허리는
+    C자 모양이 아닌 I자 모양이 되도록 합니다. </string>
 </resources>

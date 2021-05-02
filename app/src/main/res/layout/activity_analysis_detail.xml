@@ -17,7 +17,7 @@
             android:id="@+id/Btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/address"
+            android:text="address"
             android:background="@drawable/background_transparent"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Btn2"
