@@ -3,10 +3,12 @@ package com.example.golf;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class analysis_detail extends AppCompatActivity implements View.OnClickListener{
@@ -15,6 +17,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     private Integer [] RidBtn = {
             R.id.Btn1,R.id.Btn2,R.id.Btn3,R.id.Btn4,
             R.id.Btn5,R.id.Btn6,R.id.Btn7};
+    private ImageView pose_img;
 
     private TextView address, takeAway, top, down, impact, followThru, finish;
 
@@ -22,6 +25,9 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_detail);
+
+        pose_img = (ImageView)findViewById(R.id.poseimg);
+        pose_img.setImageResource(R.drawable.g0);
 
         address = (TextView)findViewById(R.id.commentText);
         takeAway = (TextView)findViewById(R.id.commentText);
@@ -58,24 +64,31 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view){
         switch (view.getId()){
             case R.id.Btn1:
+                pose_img.setImageResource(R.drawable.g0);
                 address.setText(R.string.address);
                 break;
             case R.id.Btn2:
+                pose_img.setImageResource(R.drawable.g1);
                 takeAway.setText(R.string.takeAway);
                 break;
             case R.id.Btn3:
+                pose_img.setImageResource(R.drawable.g2);
                 top.setText(R.string.top);
                 break;
             case R.id.Btn4:
+                pose_img.setImageResource(R.drawable.g3);
                 down.setText(R.string.down);
                 break;
             case R.id.Btn5:
+                pose_img.setImageResource(R.drawable.g4);
                 impact.setText(R.string.impact);
                 break;
             case R.id.Btn6:
+                pose_img.setImageResource(R.drawable.g5);
                 followThru.setText(R.string.followThru);
                 break;
             case R.id.Btn7:
+                pose_img.setImageResource(R.drawable.g7);
                 finish.setText(R.string.finish);
                 break;
         }

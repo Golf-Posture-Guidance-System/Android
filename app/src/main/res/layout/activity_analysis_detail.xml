@@ -85,7 +85,7 @@
             android:id="@+id/poseimg"
             android:layout_width="310dp"
             android:layout_height="330dp"
-            android:background="@drawable/golf_image_border"/>
+            />
 
         <TextView
             android:layout_marginTop="22dp"
