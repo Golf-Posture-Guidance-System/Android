@@ -150,7 +150,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void run() {
 
-                            for(int i = 0; i < 6; i++) {
+                            for(int i = 0; i < 7; i++) {
                                 String Strnum = Integer.toString(num);
                                 f1 = new File("/sdcard/" + userid, imagename + Strnum + ".jpg");
 
@@ -163,7 +163,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             }
 
                         }
-                    }, 10000); //딜레이 타임 조절
+                    }, 30000); //딜레이 타임 조절
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -173,7 +173,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             startActivity(intent);
                             finish();
                         }
-                    }, 14000); //딜레이 타임 조절
+                    }, 34000); //딜레이 타임 조절
                     break;
                 }
 
