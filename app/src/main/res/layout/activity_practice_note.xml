@@ -104,8 +104,6 @@
                     android:text="날짜 언제언제 스윙"
                     android:textColor="@color/onyx"
                     android:textSize="15sp" />
-
-
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
