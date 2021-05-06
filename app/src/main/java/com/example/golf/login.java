@@ -29,6 +29,7 @@ import okhttp3.Response;
 public class login extends AppCompatActivity {
      String userid ;
      String password ;
+     String username ;
     public static Context context_main;
     @Override
 
@@ -112,12 +113,64 @@ public class login extends AppCompatActivity {
                             Log.d("LOGIN", "Response from the server : " + loginResponseString);
                             if (loginResponseString.equals("success")) {
                                 Log.d("LOGIN", "Successful Login");
-                                Intent intent = new Intent(login.this,MainMenu.class);
-                                startActivity(intent);
-                                finish();
+                                db();
+
                             } else if (loginResponseString.equals("failure")) {
                                 Toast.makeText(login.this,"아이디,비밀번호를 확인하세요. ", Toast.LENGTH_SHORT).show();
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+    }
+    public void db() {
+        String userid = ((login)login.context_main).userid;
+
+        JSONObject loginForm = new JSONObject();
+        try {
+            loginForm.put("subject", "MainMenu");
+            loginForm.put("userid", userid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), loginForm.toString());
+
+        postRequest1(submain.postUrl, body);
+
+    }
+
+    public void postRequest1(String postUrl, RequestBody postBody) {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(postBody)
+                .header("Accept", "application/json")
+                .header("Content-Type", "application/json")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            username = response.body().string().trim();
+                            Log.d("qwe",username);
+                            Intent intent = new Intent(login.this,MainMenu.class);
+                            startActivity(intent);
+                            finish();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
