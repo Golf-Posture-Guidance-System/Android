@@ -67,7 +67,7 @@
                 android:layout_below="@id/profileImg"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="김예림님"
+                android:text="null님"
                 android:textColor="@color/onyx"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -156,6 +156,7 @@
                 android:layout_below="@+id/gallery"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
+                android:id="@+id/pracNoteBtn"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="3dp" >
                 <ImageView

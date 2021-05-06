@@ -6,7 +6,6 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +14,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -26,13 +26,10 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        CardView cameraview,galleryview;
+        CardView cameraview,galleryview,prac_view;
+        TextView user_id;
+
         cameraview = (CardView) findViewById(R.id.cameraSwing);
-        galleryview = (CardView) findViewById(R.id.gallery);
-        navigationView = findViewById(R.id.navView);
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navigationView.setItemIconTintList(null);
-        navigationView.setNavigationItemSelectedListener(MainMenu.this);
         cameraview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +39,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 finish();
             }
         });
+        galleryview = (CardView) findViewById(R.id.gallery);
         galleryview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,12 +49,32 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 finish();
             }
         });
+        prac_view = (CardView)findViewById(R.id.pracNoteBtn);
+        prac_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu.this,PracticeNote.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        user_id = (TextView)findViewById(R.id.userId);
+
+        navigationView = findViewById(R.id.navView);
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(MainMenu.this);
+
         findViewById(R.id.navBtn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        //아이디 변경
 
     }
     @Override
@@ -96,7 +114,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             });
             AlertDialog alertDialog2 = builder1.create();
             builder1.show();
-
         }
 
         //Drawer를 닫기...
