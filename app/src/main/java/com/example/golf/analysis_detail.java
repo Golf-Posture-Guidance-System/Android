@@ -33,6 +33,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_detail);
+
         imageView = (ImageView)findViewById(R.id.poseimg);
         address = (TextView)findViewById(R.id.commentText);
         takeAway = (TextView)findViewById(R.id.commentText);
@@ -43,6 +44,13 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         finish = (TextView)findViewById(R.id.commentText);
         pracBtn = (Button)findViewById(R.id.pracNoteBtn);
         mainBtn = (Button)findViewById(R.id.backToMainBtn);
+
+        intent = getIntent() ;
+        userid = ((login)login.context_main).userid;
+        imagename =  intent.getStringExtra("imagename") ;
+        f = new File("/sdcard/" + userid, imagename + '0' + ".jpg");
+        myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
+        imageView.setImageBitmap(myBitmap);
 
         for ( int i=0;i<7;i++) {
             poseBtn[i] = (Button) findViewById(RidBtn[i]);
