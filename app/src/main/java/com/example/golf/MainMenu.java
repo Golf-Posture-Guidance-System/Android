@@ -11,25 +11,44 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    String username;
+    TextView user_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         CardView cameraview,galleryview,prac_view;
-        TextView user_id;
-
+        username = ((login)login.context_main).username;
+        user_name = (TextView)findViewById(R.id.userId);
+        user_name.setText(username);
         cameraview = (CardView) findViewById(R.id.cameraSwing);
+
         cameraview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,8 +77,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 finish();
             }
         });
-
-        user_id = (TextView)findViewById(R.id.userId);
 
         navigationView = findViewById(R.id.navView);
 
@@ -98,7 +115,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         if (id == R.id.Logout) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
             final CharSequence[] items = {"예", "취소",
-                    };
+            };
             builder1.setTitle("로그아웃 하시겠습니까?");
             builder1.setItems(items, new DialogInterface.OnClickListener() {
                 @Override
