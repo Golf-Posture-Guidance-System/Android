@@ -121,13 +121,19 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 impact.setText(R.string.impact);
                 break;
             case R.id.Btn6:
+                intent = getIntent();
+                userid = ((login)login.context_main).userid;
+                imagename =  intent.getStringExtra("imagename") ;
+                f = new File("/sdcard/" + userid, imagename + '5' + ".jpg");
+                myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
+                imageView.setImageBitmap(myBitmap);
                 followThru.setText(R.string.followThru);
                 break;
             case R.id.Btn7:
                 intent = getIntent();
                 userid = ((login)login.context_main).userid;
                 imagename =  intent.getStringExtra("imagename") ;
-                f = new File("/sdcard/" + userid, imagename + '5' + ".jpg");
+                f = new File("/sdcard/" + userid, imagename + '6' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 finish.setText(R.string.finish);
