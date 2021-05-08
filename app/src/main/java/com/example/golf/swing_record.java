@@ -101,6 +101,8 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                 mediaRecorder = null;
                 mcam.lock();
                 recording = false;
+                setResult(RESULT_OK);
+                finish();
             }
             else { //화면 녹화 시작
                 swingTimer();
@@ -132,6 +134,8 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                             mediaRecorder.release();
                         }
                         recording = true;
+
+
                     }
                 });
             }
@@ -144,7 +148,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
         Camera.Parameters params = mcam.getParameters();
         params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         mcam.setParameters(params);
-        
+
         mcam.setDisplayOrientation(90);
         surfaceView = (SurfaceView)findViewById(R.id.surfaceView);
         surfaceHolder = surfaceView.getHolder();
@@ -156,15 +160,6 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
         @Override
         public void onPermissionGranted() {
             Toast.makeText(swing_record.this, "권한 허가", Toast.LENGTH_SHORT).show();
-/*
-            mcam = android.hardware.Camera.open();
-            mcam.setDisplayOrientation(90);
-            surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-            surfaceHolder = surfaceView.getHolder();
-            surfaceHolder.addCallback(swing_record.this);
-            surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-            */
-
         }
 
         @Override
