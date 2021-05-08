@@ -10,11 +10,9 @@ import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Button;
-import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +32,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     int i = 0;
     final int TOTALTIME = 30000;
     final int COUNT_DOWN_INTERVAL = 1000;
+
     private Camera mcam;
     private MediaRecorder mediaRecorder;
     private SurfaceView surfaceView;
@@ -45,6 +44,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
         if (mcam == null) {
             try {
+
                 mcam.setPreviewDisplay(surfaceHolder);
                 mcam.startPreview();
             }catch (Exception e) {
@@ -140,6 +140,11 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
 
     private  void setting(){
         mcam = Camera.open();
+
+        Camera.Parameters params = mcam.getParameters();
+        params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+        mcam.setParameters(params);
+        
         mcam.setDisplayOrientation(90);
         surfaceView = (SurfaceView)findViewById(R.id.surfaceView);
         surfaceHolder = surfaceView.getHolder();
@@ -168,7 +173,8 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
         }
     };
 
-        public void swingTimer() {
+
+    public void swingTimer() {
             time_text = (TextView) findViewById(R.id.countDown);
             progressBar = (ProgressBar) findViewById(R.id.progress);
             progressBar.setProgress(i);
@@ -188,19 +194,6 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                 }
             }.start();
         }
-    private void refreshCamera(android.hardware.Camera camera) {
-        if (surfaceHolder.getSurface() == null) {
-            return;
-        }
-
-        try {
-            camera.stopPreview();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        setCamera(camera);
-    }
     private void setCamera(android.hardware.Camera cam) {
         mcam = cam;
     }
