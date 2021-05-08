@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class submain extends AppCompatActivity {
     private Button loginBtn, joinBtn,findPwd;
     public static Context mainActivityContext;
-    static String postUrl = "http://192.168.219.105:5000/db";
+    static String postUrl = "http://172.30.1.43:5000/db";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
