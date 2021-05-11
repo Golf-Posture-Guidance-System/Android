@@ -202,7 +202,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(videoPreview.this,"인터넷 연결을 확인하세요.", Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }
@@ -305,6 +305,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     private void Camera(Intent data) {
 
         String filepath = data.getStringExtra("filepath");
+        String filepath1 = "sdcard/DCIM/Camera/캐뤼.mp4";
         final MediaController mediaController =
                 new MediaController(this);
         Uri cVideoUri = Uri.parse(filepath);
