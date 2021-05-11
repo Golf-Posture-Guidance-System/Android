@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
@@ -32,11 +33,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class swing_record extends AppCompatActivity implements SurfaceHolder.Callback {
-    CountDownTimer swingTimer;
-    TextView time_text;
+    CountDownTimer swingTimer, readyTimer;
+    TextView time_text, ready_text;
     ProgressBar progressBar;
     public static Context context_main;
     int i = 0;
+    final int READYTIME = 4000;
     final int TOTALTIME = 30000;
     final int COUNT_DOWN_INTERVAL = 1000;
     private Camera camera;
@@ -65,7 +67,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
             String getTime = simpleDate.format(mDate);
 
             if (tbtn.isChecked()) { //화면 녹화 시작
-                swingTimer();
+                readyTimer();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -124,6 +126,24 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
             Toast.makeText(swing_record.this, "권한 거부", Toast.LENGTH_SHORT).show();
         }
     };
+        public  void readyTimer() {
+            ready_text = (TextView) findViewById(R.id.readyBtn);
+            readyTimer = new CountDownTimer(READYTIME, COUNT_DOWN_INTERVAL) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    ready_text.setText(millisUntilFinished / 1000 + "초");
+                    if (millisUntilFinished / 1000 == 0){
+                        ready_text.setText("시작!");
+                    }
+                }
+
+                @Override
+                public void onFinish() {
+                    ready_text.setVisibility(View.INVISIBLE);
+                    swingTimer();
+                }
+            }.start();
+        }
         public void swingTimer() {
             time_text = (TextView) findViewById(R.id.countDown);
             progressBar = (ProgressBar) findViewById(R.id.progress);
