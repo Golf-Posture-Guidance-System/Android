@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Button;
@@ -18,9 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +35,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     CountDownTimer swingTimer;
     TextView time_text;
     ProgressBar progressBar;
+    public static Context context_main;
     int i = 0;
     final int TOTALTIME = 30000;
     final int COUNT_DOWN_INTERVAL = 1000;
@@ -36,7 +43,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     private MediaRecorder mediaRecorder;
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
-
+    String filepath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,11 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
         final ToggleButton tbtn = (ToggleButton) this.findViewById(R.id.recordBtn);
 
         tbtn.setOnClickListener(v -> {
+            long now = System.currentTimeMillis();
+            Date mDate = new Date(now);
+            SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMdd_hhmmss");
+            String getTime = simpleDate.format(mDate);
+
             if (tbtn.isChecked()) { //화면 녹화 시작
                 swingTimer();
                 runOnUiThread(new Runnable() {
@@ -60,12 +72,9 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                         tbtn.setBackgroundDrawable(
                                 getResources().getDrawable(R.drawable.ic_stop)
                         );
-                        long now = System.currentTimeMillis();
-                        Date mDate = new Date(now);
-                        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMdd_hhmmss");
-                        String getTime = simpleDate.format(mDate);
                         Toast.makeText(swing_record.this, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
                         try {
+                            filepath = "sdcard/DCIM/" + getTime + ".mp4";
                             mediaRecorder = new MediaRecorder();
                             camera.unlock();
                             mediaRecorder.setCamera(camera);
@@ -73,7 +82,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                             mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
                             mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_720P));
                             mediaRecorder.setOrientationHint(90);
-                            mediaRecorder.setOutputFile("sdcard/" + getTime + ".mp4");
+                            mediaRecorder.setOutputFile(filepath);
                             mediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
                             mediaRecorder.prepare();
                             mediaRecorder.start();
@@ -84,9 +93,14 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                     }
                 });
 
-            } else { //화면 녹화 중지
-                setResult(RESULT_OK);
-                finish();
+            } else {//화면 녹화 중지
+                mediaRecorder.stop();
+
+                        Intent intent = new Intent();
+                        intent.putExtra("filepath", filepath);
+                        setResult(RESULT_OK,intent);
+                        finish();
+
             }
         });
     }
