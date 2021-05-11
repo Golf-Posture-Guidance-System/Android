@@ -7,9 +7,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewOutlineProvider;
@@ -19,6 +23,8 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
@@ -31,7 +37,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -41,7 +49,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class videoPreview extends AppCompatActivity implements View.OnClickListener{
+public class videoPreview extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "MainActivity";
     public static Context mContext;
     CognitoCachingCredentialsProvider credentialsProvider;
@@ -51,14 +59,19 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     ImageButton playBtn;
     VideoView Videoview;
     File f;
+    File f1;
     private String userChoosenTask;
     Uri VideoUri;
     String videopath;
     private Uri mImageUri;
     private int REQUEST_CAMERA;
+    String imagename;
     private int SELECT_FILE;
     public static Context context_main;
-
+    private static final String ACCESS_KEY = "AKIAV7WUXMYC2J5GO6ND";
+    private static final String SECRET_KEY = "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";
+    private AmazonS3 amazonS3;
+    int num = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +84,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
         retryBtn.setOnClickListener(this);
 
         setClipToOutline(findViewById(R.id.video_view_container),true);
+        AWSCredentials awsCredentials = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
 
         credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
@@ -129,6 +143,37 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             f.getName(),
                             f
                     );
+                    imagename = f.getName().replace("mp4", "jpg");
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            for(int i = 0; i < 7; i++) {
+                                String Strnum = Integer.toString(num);
+                                f1 = new File("/sdcard/" + userid, imagename + Strnum + ".jpg");
+
+                                TransferObserver observer1 = transferUtility.download(
+                                        "golfapplication/" + userid + "/image",     /* The bucket to download from */
+                                        f.getName() + '-' + Strnum + ".jpg",    /* The key for the object to download */
+                                        f1       /* The file to download the object to */
+                                );
+                                num++;
+                            }
+
+                        }
+                    }, 30000); //딜레이 타임 조절
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Intent intent = new Intent(videoPreview.this,analysis.class);
+                            intent.putExtra("imagename", imagename) ;
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 34000); //딜레이 타임 조절
                     break;
                 }
 
@@ -251,9 +296,30 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
             }
             else if(requestCode == REQUEST_CAMERA)
             {
-                galleryIntent();
+
+               Camera(data);
+
             }
         }
+    }
+    private void Camera(Intent data) {
+
+        String filepath = data.getStringExtra("filepath");
+        final MediaController mediaController =
+                new MediaController(this);
+        Uri cVideoUri = Uri.parse(filepath);
+        f = new File(filepath);
+        Videoview.setVideoURI(cVideoUri);
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Videoview.setMediaController(mediaController);
+
+                Videoview.start();
+
+            }
+        });
     }
 
     private void onSelectFromGalleryResult(Intent data, int imagetype) {
