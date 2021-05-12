@@ -1,0 +1,28 @@
+package com.example.golf;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class loading extends AppCompatActivity {
+    TextView point;
+    ImageView loading;
+    AnimationDrawable animation;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loading);
+
+        loading = findViewById(R.id.loading);
+        animation = new AnimationDrawable();
+        animation.addFrame(getResources().getDrawable(R.drawable.ic_loading1),500);
+        animation.addFrame(getResources().getDrawable(R.drawable.ic_loading2),500);
+        loading.setImageDrawable(animation);
+        animation.start();
+    }
+}

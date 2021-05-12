@@ -29,4 +29,6 @@
     <string name="followThru">팔로우스루 Tip : 척추와 왼쪽 다리가 쭉 펴진 채로 있어야 합니다. 왼쪽 다리에 무게를 두세요.</string>
     <string name="finish">피니쉬 Tip : 헤드업이 주로 발생하는 자세입니다. 머리를 지나치게 들지 말고 시선은 공을 쳐다보세요. 허리는
     C자 모양이 아닌 I자 모양이 되도록 합니다. </string>
+    <string name="loading">스윙 분석 중 </string>
+    <string name="explain">잠시만 기다려 주세요:)</string>
 </resources>
