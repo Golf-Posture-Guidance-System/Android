@@ -23,11 +23,7 @@
         <activity android:name=".loading"/>
         <activity android:name=".analysis_detail"/>
         <activity android:name=".swing_record">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".PracticeNote" />
         <activity android:name=".MainMenu" />

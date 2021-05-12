@@ -12,6 +12,7 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -65,7 +66,8 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
 
             if (tbtn.isChecked()) { //화면 녹화 시작
                 readyTimer();
-                runOnUiThread(new Runnable() {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         tbtn.setBackgroundDrawable(
@@ -73,8 +75,9 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                         );
                         Toast.makeText(swing_record.this, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
 
+
                     }
-                });
+                },READYTIME);
 
             } else {//화면 녹화 중지
                 mediaRecorder.stop();
