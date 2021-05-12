@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,12 +26,15 @@ import com.gun0912.tedpermission.TedPermission;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
 
 public class swing_record extends AppCompatActivity implements SurfaceHolder.Callback {
-    CountDownTimer swingTimer;
-    TextView time_text;
+
+    CountDownTimer swingTimer, readyTimer;
+    TextView time_text, ready_text;
     ProgressBar progressBar;
     int i = 0;
+    final int READYTIME = 4000;
     final int TOTALTIME = 30000;
     final int COUNT_DOWN_INTERVAL = 1000;
 
@@ -39,6 +44,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     private SurfaceHolder surfaceHolder;
 
     boolean recording = false; //초기는 녹화중이 아님
+    String filepath;
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
@@ -83,13 +89,6 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swing_record);
 
-        TedPermission.with(this)
-                .setPermissionListener(permission)
-                .setRationaleMessage("녹화를 위하여 권한을 허용해주세요.")
-                .setDeniedMessage("권한이 거부되었습니다. 설정 > 권한에서 허용해주세요.")
-                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
-                .check();
-
         setting();
 
         final ToggleButton tbtn = (ToggleButton) this.findViewById(R.id.recordBtn);
@@ -102,11 +101,14 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                 mcam.lock();
                 recording = false;
                 setResult(RESULT_OK);
+                Intent intent = new Intent();
+                intent.putExtra("filepath", filepath);
+                setResult(RESULT_OK,intent);
                 finish();
             }
             else { //화면 녹화 시작
-                swingTimer();
-                runOnUiThread(new Runnable() {
+                readyTimer();
+                runOnUiThread (new Runnable() {
                     @Override
                     public void run() {
                         tbtn.setBackgroundDrawable( //버튼바꾸기
@@ -118,6 +120,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                         String getTime = simpleDate.format(mDate);
                         Toast.makeText(swing_record.this, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
                         try {
+                            filepath = "sdcard/DCIM/" + getTime + ".mp4";
                             mediaRecorder = new MediaRecorder();
                             mcam.unlock();
                             mediaRecorder.setCamera(mcam);
@@ -134,8 +137,6 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                             mediaRecorder.release();
                         }
                         recording = true;
-
-
                     }
                 });
             }
@@ -169,6 +170,24 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     };
 
 
+    public  void readyTimer() {
+        ready_text = (TextView) findViewById(R.id.readyBtn);
+        readyTimer = new CountDownTimer(READYTIME, COUNT_DOWN_INTERVAL) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                ready_text.setText(millisUntilFinished / 1000 + "초");
+                if (millisUntilFinished / 1000 == 0){
+                    ready_text.setText("시작!");
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                ready_text.setVisibility(View.INVISIBLE);
+                swingTimer();
+            }
+        }.start();
+    }
     public void swingTimer() {
             time_text = (TextView) findViewById(R.id.countDown);
             progressBar = (ProgressBar) findViewById(R.id.progress);
