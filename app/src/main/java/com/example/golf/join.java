@@ -2,6 +2,7 @@ package com.example.golf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,8 +27,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class join extends AppCompatActivity {
-
+    String username;
     ImageButton backBtn;
+    public static Context context_main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class join extends AppCompatActivity {
         EditText useremailView = findViewById(R.id.userEmail);
         EditText userpwdView = findViewById(R.id.userPwd);
 
-        String username = usernameView.getText().toString().trim();
+        username = usernameView.getText().toString().trim();
         String userid = useridView.getText().toString().trim();
         String useremail = useremailView.getText().toString().trim();
         String userpwd = userpwdView.getText().toString().trim();

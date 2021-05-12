@@ -161,19 +161,12 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                                 );
                                 num++;
                             }
-
-                        }
-                    }, 30000); //딜레이 타임 조절
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            Intent intent = new Intent(videoPreview.this,analysis.class);
-                            intent.putExtra("imagename", imagename) ;
-                            startActivity(intent);
                             finish();
                         }
-                    }, 34000); //딜레이 타임 조절
+                    }, 30000); //딜레이 타임 조절
+                            Intent intent = new Intent(videoPreview.this,loading.class);
+                            intent.putExtra("imagename", imagename) ;
+                            startActivity(intent);
                     break;
                 }
 
@@ -297,7 +290,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
             else if(requestCode == REQUEST_CAMERA)
             {
 
-               Camera(data);
+                Camera(data);
 
             }
         }

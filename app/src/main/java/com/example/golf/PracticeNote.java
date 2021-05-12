@@ -16,16 +16,7 @@ public class PracticeNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_note);
 
-        /* => 실행시 오류남ㅜㅜ 앱 안켜짐.. 그래서 주석처리했습니당
-        addBtn = (ImageButton) findViewById(R.id.addBtn);
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //여기에 버튼 클릭시 숨겨진 버튼 두개 보이게(엘범 불러오기 촬영하기) 코딩
-            }
-        });
-        backBtn =(ImageButton) findViewById(R.id.backBtn);
-
+        backBtn =(ImageButton)findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,9 +25,9 @@ public class PracticeNote extends AppCompatActivity {
                 finish();
             }
         });
-        */
+    }
+    public void submit(View v){
 
     }
-
 
 }

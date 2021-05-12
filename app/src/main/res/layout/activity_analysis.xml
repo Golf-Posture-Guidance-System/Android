@@ -36,6 +36,7 @@
         android:textColor="@color/onyx"
         android:textStyle="bold"/>
     <ImageView
+        android:id="@+id/image"
         android:layout_width="310dp"
         android:layout_height="330dp"
         android:layout_gravity="center_horizontal"
