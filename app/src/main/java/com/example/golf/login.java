@@ -30,6 +30,7 @@ public class login extends AppCompatActivity {
     String userid ;
     String password ;
     String username ;
+    boolean check = false;
     public static Context context_main;
     @Override
 
@@ -51,28 +52,29 @@ public class login extends AppCompatActivity {
     }
 
     public void submit(View v) {
-        EditText useridView = findViewById(R.id.userId);
-        EditText passwordView = findViewById(R.id.userPwd);
-        userid = useridView.getText().toString().trim();
-        password = passwordView.getText().toString().trim();
+        if(check == false) {
+            EditText useridView = findViewById(R.id.userId);
+            EditText passwordView = findViewById(R.id.userPwd);
+            userid = useridView.getText().toString().trim();
+            password = passwordView.getText().toString().trim();
 
-        if (userid.length() == 0 || password.length() == 0) {
-            Toast.makeText(getApplicationContext(), "아이디와 패스워드를 입력하세요.", Toast.LENGTH_LONG).show();
-            return;
-        }
-        else {
-            JSONObject loginForm = new JSONObject();
-            try {
-                loginForm.put("subject", "login");
-                loginForm.put("userid", userid);
-                loginForm.put("userpwd", password);
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if (userid.length() == 0 || password.length() == 0) {
+                Toast.makeText(getApplicationContext(), "아이디와 패스워드를 입력하세요.", Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                check = true;
+                JSONObject loginForm = new JSONObject();
+                try {
+                    loginForm.put("subject", "login");
+                    loginForm.put("userid", userid);
+                    loginForm.put("userpwd", password);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), loginForm.toString());
+                postRequest(submain.postUrl, body);
             }
-
-            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), loginForm.toString());
-
-            postRequest(submain.postUrl, body);
         }
     }
 
