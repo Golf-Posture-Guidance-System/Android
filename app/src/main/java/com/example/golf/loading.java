@@ -7,6 +7,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +25,6 @@ public class loading extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
         Intent intent = getIntent() ;
-        String imagename =  intent.getStringExtra("imagename") ;
         loading = findViewById(R.id.loading);
         animation = new AnimationDrawable();
         animation.addFrame(getResources().getDrawable(R.drawable.ic_loading1),500);
@@ -35,11 +35,8 @@ public class loading extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(loading.this,analysis.class);
-                intent.putExtra("imagename", imagename);
-                startActivity(intent);
+                setResult(RESULT_OK,intent);
                 finish();
-
                 }
         }, 34000); //딜레이 타임 조절
     }

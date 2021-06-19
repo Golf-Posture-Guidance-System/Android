@@ -103,11 +103,11 @@
             android:layout_below="@+id/golfTip"
             >
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/pracNoteBtn"
+                android:id="@+id/backBtn"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
                 android:background="@drawable/rounded_green"
-                android:text="연습 노트"
+                android:text="이전 화면"
                 android:textColor="@color/white"
                 />
 

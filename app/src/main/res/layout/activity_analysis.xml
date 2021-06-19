@@ -70,11 +70,11 @@
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="145dp"
             android:text="80"
             android:textColor="@color/green"
             android:textSize="27sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="145dp"/>
+            android:textStyle="bold" />
 
     </FrameLayout>
 

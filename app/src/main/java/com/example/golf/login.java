@@ -29,7 +29,7 @@ import okhttp3.Response;
 public class login extends AppCompatActivity {
     String userid ;
     String password ;
-    String username ;
+    String username;
     boolean check = false;
     public static Context context_main;
     @Override
@@ -168,7 +168,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            username = response.body().string().trim();
+                            username= response.body().string().trim();
                             Log.d("qwe",username);
                             Intent intent = new Intent(login.this,MainMenu.class);
                             startActivity(intent);

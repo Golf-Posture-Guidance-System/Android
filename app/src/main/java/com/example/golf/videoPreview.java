@@ -40,6 +40,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -62,7 +63,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     File f1;
     private String userChoosenTask;
     Uri VideoUri;
-    String videopath;
+    String videopath, score;
     private Uri mImageUri;
     private int REQUEST_CAMERA;
     String imagename;
@@ -114,7 +115,6 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
         String userid = ((login)login.context_main).userid;
         switch (view.getId()) {
             case R.id.send:
@@ -152,7 +152,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
 
                             for(int i = 0; i < 7; i++) {
                                 String Strnum = Integer.toString(num);
-                                f1 = new File("/sdcard/" + userid, imagename + Strnum + ".jpg");
+                                f1 = new File("/sdcard/" + userid +"/image/" + imagename + Strnum + ".jpg");
 
                                 TransferObserver observer1 = transferUtility.download(
                                         "golfapplication/" + userid + "/image",     /* The bucket to download from */
@@ -161,12 +161,10 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                                 );
                                 num++;
                             }
-                            finish();
                         }
                     }, 30000); //딜레이 타임 조절
                             Intent intent = new Intent(videoPreview.this,loading.class);
-                            intent.putExtra("imagename", imagename) ;
-                            startActivity(intent);
+                            startActivityForResult(intent,123);
                     break;
                 }
 
@@ -176,45 +174,51 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
         }
     }
     public void postRequest(String postUrl, RequestBody postBody) {
-        OkHttpClient client = new OkHttpClient();
-
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
         Request request = new Request.Builder()
                 .url(postUrl)
                 .post(postBody)
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
                 .build();
+
         client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                // Cancel the post on failure.
-                call.cancel();
-                Log.d("FAIL", e.getMessage());
+                @Override
+                public void onFailure (Call call, IOException e){
+                    // Cancel the post on failure.
+                    call.cancel();
+                    Log.d("qweqwe", e.getMessage());
 
-                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+                    // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
 
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+
+                @Override
+                public void onResponse (Call call,final Response response) throws IOException {
+                    // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response.body().string());
+                                score = jsonObject.getString("score");
+                                Log.d("qwe", score);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            });
 
     }
     private void selectImage() {
@@ -292,6 +296,15 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
 
                 Camera(data);
 
+            }
+            else if(requestCode == 123)
+            {
+                Intent intent = new Intent(videoPreview.this,analysis.class);
+                intent.putExtra("imagename", imagename);
+                intent.putExtra("score", score);
+                intent.putExtra("resultcode", "1");
+                startActivity(intent);
+                finish();
             }
         }
     }

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class submain extends AppCompatActivity {
     private Button loginBtn, joinBtn,findPwd;
     public static Context mainActivityContext;
-    static String postUrl = "http://112.152.34.130:5000/db";
+    static String postUrl = "http://192.168.200.187:5000/db";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
