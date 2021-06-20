@@ -63,7 +63,8 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     File f1;
     private String userChoosenTask;
     Uri VideoUri;
-    String videopath, score;
+    String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing;
     private Uri mImageUri;
     private int REQUEST_CAMERA;
     String imagename;
@@ -211,7 +212,24 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             try {
                                 JSONObject jsonObject = new JSONObject(response.body().string());
                                 score = jsonObject.getString("score");
-                                Log.d("qwe", score);
+                                chiken_wing = jsonObject.getString("chiken_wing");
+                                body_sway = jsonObject.getString("body_sway");
+                                finish_advice = jsonObject.getString("finish_advice");
+                                add_advice1 = jsonObject.getString("add_advice1");
+                                add_advice2 = jsonObject.getString("add_advice2");
+                                add_advice3 = jsonObject.getString("add_advice3");
+                                taway_advice = jsonObject.getString("taway_advice");
+                                top_advice1 = jsonObject.getString("top_advice1");
+                                top_advice2 = jsonObject.getString("top_advice2");
+                                top_advice3 = jsonObject.getString("top_advice3");
+                                down_advice = jsonObject.getString("down_advice");
+                                imp_advice1 = jsonObject.getString("imp_advice1");
+                                imp_advice2 = jsonObject.getString("imp_advice2");
+                                imp_advice3 = jsonObject.getString("imp_advice3");
+                                slice_advice = jsonObject.getString("slice_advice");
+                                thu_advice1 = jsonObject.getString("thu_advice1");
+                                thu_advice2 = jsonObject.getString("thu_advice2");
+                                thu_advice3 = jsonObject.getString("thu_advice3");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -302,7 +320,24 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(videoPreview.this,analysis.class);
                 intent.putExtra("imagename", imagename);
                 intent.putExtra("score", score);
-                intent.putExtra("resultcode", "1");
+                intent.putExtra("chiken_wing", chiken_wing);
+                intent.putExtra("body_sway", body_sway);
+                intent.putExtra("finish_advice", finish_advice);
+                intent.putExtra("add_advice1", add_advice1);
+                intent.putExtra("add_advice2", add_advice2);
+                intent.putExtra("add_advice3", add_advice3);
+                intent.putExtra("taway_advice", taway_advice);
+                intent.putExtra("top_advice1", top_advice1);
+                intent.putExtra("top_advice2", top_advice2);
+                intent.putExtra("top_advice3", top_advice3);
+                intent.putExtra("down_advice", down_advice);
+                intent.putExtra("imp_advice1", imp_advice1);
+                intent.putExtra("imp_advice2", imp_advice2);
+                intent.putExtra("imp_advice3", imp_advice3);
+                intent.putExtra("slice_advice", slice_advice);
+                intent.putExtra("thu_advice1", thu_advice1);
+                intent.putExtra("thu_advice2", thu_advice2);
+                intent.putExtra("thu_advice3", thu_advice3);
                 startActivity(intent);
                 finish();
             }

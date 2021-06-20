@@ -33,7 +33,8 @@ public class PracticeNote extends AppCompatActivity {
     CardView list1,list2,list3,list4,list5;
     String getTime;
     File savefile1,savefile2,savefile3,savefile4,savefile5;
-    String imagename, score, userid;
+    String imagename, score, userid,  add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
+            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing;;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,24 @@ public class PracticeNote extends AppCompatActivity {
         Intent intent = getIntent() ;
         imagename =  intent.getStringExtra("imagename");
         score =  intent.getStringExtra("score");
+        chiken_wing = intent.getStringExtra("chiken_wing");
+        body_sway = intent.getStringExtra("body_sway");
+        finish_advice = intent.getStringExtra("finish_advice");
+        add_advice1 = intent.getStringExtra("add_advice1");
+        add_advice2 = intent.getStringExtra("add_advice2");
+        add_advice3 = intent.getStringExtra("add_advice3");
+        taway_advice = intent.getStringExtra("taway_advice");
+        top_advice1 = intent.getStringExtra("top_advice1");
+        top_advice2 = intent.getStringExtra("top_advice2");
+        top_advice3 = intent.getStringExtra("top_advice3");
+        down_advice = intent.getStringExtra("down_advice");
+        imp_advice1 = intent.getStringExtra("imp_advice1");
+        imp_advice2 = intent.getStringExtra("imp_advice2");
+        imp_advice3 = intent.getStringExtra("imp_advice3");
+        slice_advice = intent.getStringExtra("slice_advice");
+        thu_advice1 = intent.getStringExtra("thu_advice1");
+        thu_advice2 = intent.getStringExtra("thu_advice2");
+        thu_advice3 = intent.getStringExtra("thu_advice3");
         add();
         backBtn =(ImageButton)findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +129,24 @@ public class PracticeNote extends AppCompatActivity {
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
                     intent.putExtra("imagename",imagename);
                     intent.putExtra("score",score);
+                    intent.putExtra("add_advice1", add_advice1);
+                    intent.putExtra("add_advice2", add_advice2);
+                    intent.putExtra("add_advice3", add_advice3);
+                    intent.putExtra("chiken_wing", chiken_wing);
+                    intent.putExtra("body_sway", body_sway);
+                    intent.putExtra("finish_advice", finish_advice);
+                    intent.putExtra("taway_advice", taway_advice);
+                    intent.putExtra("top_advice1", top_advice1);
+                    intent.putExtra("top_advice2", top_advice2);
+                    intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("imp_advice1", imp_advice1);
+                    intent.putExtra("imp_advice2", imp_advice2);
+                    intent.putExtra("imp_advice3", imp_advice3);
+                    intent.putExtra("slice_advice", slice_advice);
+                    intent.putExtra("thu_advice1", thu_advice1);
+                    intent.putExtra("thu_advice2", thu_advice2);
+                    intent.putExtra("thu_advice3", thu_advice3);
                     startActivity(intent);
                     finish();
                 }
@@ -126,6 +163,24 @@ public class PracticeNote extends AppCompatActivity {
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
                     intent.putExtra("imagename", imagename);
                     intent.putExtra("score", score);
+                    intent.putExtra("add_advice1", add_advice1);
+                    intent.putExtra("add_advice2", add_advice2);
+                    intent.putExtra("add_advice3", add_advice3);
+                    intent.putExtra("chiken_wing", chiken_wing);
+                    intent.putExtra("body_sway", body_sway);
+                    intent.putExtra("finish_advice", finish_advice);
+                    intent.putExtra("taway_advice", taway_advice);
+                    intent.putExtra("top_advice1", top_advice1);
+                    intent.putExtra("top_advice2", top_advice2);
+                    intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("imp_advice1", imp_advice1);
+                    intent.putExtra("imp_advice2", imp_advice2);
+                    intent.putExtra("imp_advice3", imp_advice3);
+                    intent.putExtra("slice_advice", slice_advice);
+                    intent.putExtra("thu_advice1", thu_advice1);
+                    intent.putExtra("thu_advice2", thu_advice2);
+                    intent.putExtra("thu_advice3", thu_advice3);
                     startActivity(intent);
                     finish();
                 }
@@ -141,6 +196,24 @@ public class PracticeNote extends AppCompatActivity {
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
                     intent.putExtra("imagename", imagename);
                     intent.putExtra("score", score);
+                    intent.putExtra("add_advice1", add_advice1);
+                    intent.putExtra("add_advice2", add_advice2);
+                    intent.putExtra("add_advice3", add_advice3);
+                    intent.putExtra("chiken_wing", chiken_wing);
+                    intent.putExtra("body_sway", body_sway);
+                    intent.putExtra("finish_advice", finish_advice);
+                    intent.putExtra("taway_advice", taway_advice);
+                    intent.putExtra("top_advice1", top_advice1);
+                    intent.putExtra("top_advice2", top_advice2);
+                    intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("imp_advice1", imp_advice1);
+                    intent.putExtra("imp_advice2", imp_advice2);
+                    intent.putExtra("imp_advice3", imp_advice3);
+                    intent.putExtra("slice_advice", slice_advice);
+                    intent.putExtra("thu_advice1", thu_advice1);
+                    intent.putExtra("thu_advice2", thu_advice2);
+                    intent.putExtra("thu_advice3", thu_advice3);
                     startActivity(intent);
                     finish();
                 }
@@ -156,6 +229,24 @@ public class PracticeNote extends AppCompatActivity {
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
                     intent.putExtra("imagename", imagename);
                     intent.putExtra("score", score);
+                    intent.putExtra("add_advice1", add_advice1);
+                    intent.putExtra("add_advice2", add_advice2);
+                    intent.putExtra("add_advice3", add_advice3);
+                    intent.putExtra("chiken_wing", chiken_wing);
+                    intent.putExtra("body_sway", body_sway);
+                    intent.putExtra("finish_advice", finish_advice);
+                    intent.putExtra("taway_advice", taway_advice);
+                    intent.putExtra("top_advice1", top_advice1);
+                    intent.putExtra("top_advice2", top_advice2);
+                    intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("imp_advice1", imp_advice1);
+                    intent.putExtra("imp_advice2", imp_advice2);
+                    intent.putExtra("imp_advice3", imp_advice3);
+                    intent.putExtra("slice_advice", slice_advice);
+                    intent.putExtra("thu_advice1", thu_advice1);
+                    intent.putExtra("thu_advice2", thu_advice2);
+                    intent.putExtra("thu_advice3", thu_advice3);
                     startActivity(intent);
                     finish();
                 }
@@ -167,10 +258,28 @@ public class PracticeNote extends AppCompatActivity {
             list5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    readfile("4");
+                    readfile("5");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
                     intent.putExtra("imagename", imagename);
                     intent.putExtra("score", score);
+                    intent.putExtra("add_advice1", add_advice1);
+                    intent.putExtra("add_advice2", add_advice2);
+                    intent.putExtra("add_advice3", add_advice3);
+                    intent.putExtra("chiken_wing", chiken_wing);
+                    intent.putExtra("body_sway", body_sway);
+                    intent.putExtra("finish_advice", finish_advice);
+                    intent.putExtra("taway_advice", taway_advice);
+                    intent.putExtra("top_advice1", top_advice1);
+                    intent.putExtra("top_advice2", top_advice2);
+                    intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("imp_advice1", imp_advice1);
+                    intent.putExtra("imp_advice2", imp_advice2);
+                    intent.putExtra("imp_advice3", imp_advice3);
+                    intent.putExtra("slice_advice", slice_advice);
+                    intent.putExtra("thu_advice1", thu_advice1);
+                    intent.putExtra("thu_advice2", thu_advice2);
+                    intent.putExtra("thu_advice3", thu_advice3);
                     startActivity(intent);
                     finish();
                 }
@@ -192,19 +301,134 @@ public class PracticeNote extends AppCompatActivity {
             writer.flush();
             writer.close();
             fos.close();
+            FileOutputStream fos1 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/adressfeedback.txt", true);
+            //파일쓰기
+            BufferedWriter writer1 = new BufferedWriter(new OutputStreamWriter(fos1));
+            writer1.write(add_advice1);
+            writer1.newLine();
+            writer1.write(add_advice2);
+            writer1.newLine();
+            writer1.write(add_advice3);
+            writer1.newLine();
+            writer1.flush();
+            writer1.close();
+            fos1.close();
+            FileOutputStream fos2 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/takebackfeedback.txt", true);
+            //파일쓰기
+            BufferedWriter writer2 = new BufferedWriter(new OutputStreamWriter(fos2));
+            writer2.write(taway_advice);
+            writer2.newLine();
+            writer2.flush();
+            writer2.close();
+            fos2.close();
+            FileOutputStream fos3 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/topfeedback.txt", true);
+            //파일쓰기
+            BufferedWriter writer3 = new BufferedWriter(new OutputStreamWriter(fos3));
+            writer3.write(top_advice1);
+            writer3.newLine();
+            writer3.write(top_advice2);
+            writer3.newLine();
+            writer3.write(top_advice3);
+            writer3.newLine();
+            writer3.write(slice_advice);
+            writer3.newLine();
+            writer3.flush();
+            writer3.close();
+            fos3.close();
+            FileOutputStream fos4 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/downfeedback.txt", true);
+            //파일쓰기
+            BufferedWriter writer4 = new BufferedWriter(new OutputStreamWriter(fos4));
+            writer4.write(down_advice);
+            writer4.newLine();
+            writer4.flush();
+            writer4.close();
+            fos4.close();
+            FileOutputStream fos5 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/impactback.txt", true);
+            //파일쓰기
+            BufferedWriter writer5 = new BufferedWriter(new OutputStreamWriter(fos5));
+            writer5.write(imp_advice1);
+            writer5.newLine();
+            writer5.write(imp_advice2);
+            writer5.newLine();
+            writer5.write(imp_advice3);
+            writer5.newLine();
+            writer5.flush();
+            writer5.close();
+            fos5.close();
+            FileOutputStream fos6 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/followfeedback.txt", true);
+            //파일쓰기
+            BufferedWriter writer6 = new BufferedWriter(new OutputStreamWriter(fos6));
+            writer6.write(thu_advice1);
+            writer6.newLine();
+            writer6.write(thu_advice2);
+            writer6.newLine();
+            writer6.write(thu_advice3);
+            writer6.newLine();
+            writer6.write(body_sway);
+            writer6.newLine();
+            writer6.write(chiken_wing);
+            writer6.flush();
+            writer6.close();
+            fos6.close();
+            FileOutputStream fos7 = new FileOutputStream("/sdcard/" + userid + "/swingData"+ num + "/finishfeedback.txt", true);
+            //파일쓰기
+            BufferedWriter writer7 = new BufferedWriter(new OutputStreamWriter(fos7));
+            writer7.write(finish_advice);
+            writer7.newLine();
+            writer7.flush();
+            writer7.close();
+            fos7.close();
         }catch (IOException e){
             e.printStackTrace();
         }
 
     }
     protected void readfile(String num) {
-
         try {
             BufferedReader buf = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/feedback.txt"));
             getTime=buf.readLine();
             imagename=buf.readLine();
             score=buf.readLine();
             buf.close();
+
+            BufferedReader buf1 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/adressfeedback.txt"));
+            add_advice1=buf1.readLine();
+            add_advice2=buf1.readLine();
+            add_advice3=buf1.readLine();
+            buf1.close();
+
+            BufferedReader buf2 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/takebackfeedback.txt"));
+            taway_advice=buf2.readLine();
+            buf2.close();
+
+            BufferedReader buf3 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/topfeedback.txt"));
+            top_advice1=buf3.readLine();
+            top_advice2=buf3.readLine();
+            top_advice3=buf3.readLine();
+            slice_advice=buf3.readLine();
+            buf3.close();
+
+            BufferedReader buf4 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/downfeedback.txt"));
+            down_advice=buf4.readLine();
+            buf4.close();
+
+            BufferedReader buf5 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/impactback.txt"));
+            imp_advice1=buf5.readLine();
+            imp_advice2=buf5.readLine();
+            imp_advice3=buf5.readLine();
+            buf5.close();
+
+            BufferedReader buf6 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/followfeedback.txt"));
+            thu_advice1=buf6.readLine();
+            thu_advice2=buf6.readLine();
+            thu_advice3=buf6.readLine();
+            body_sway=buf6.readLine();
+            chiken_wing=buf6.readLine();
+            buf6.close();
+
+            BufferedReader buf7 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/finishfeedback.txt"));
+            finish_advice=buf7.readLine();
+            buf7.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

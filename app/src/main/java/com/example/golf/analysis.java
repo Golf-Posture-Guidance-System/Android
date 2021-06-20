@@ -48,7 +48,8 @@ public class analysis extends AppCompatActivity {
     ImageButton backBtn;
     TransferUtility transferUtility;
     File f;
-    String imagename, Sscore,userid;
+    String imagename, Sscore,userid, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing;
     FileOutputStream fos =null;
     ImageView imageView;
     TextView score;
@@ -65,6 +66,24 @@ public class analysis extends AppCompatActivity {
         userid = ((login)login.context_main).userid;
         imagename =  intent.getStringExtra("imagename");
         Sscore =  intent.getStringExtra("score");
+        chiken_wing = intent.getStringExtra("chiken_wing");
+        body_sway = intent.getStringExtra("body_sway");
+        finish_advice = intent.getStringExtra("finish_advice");
+        add_advice1 = intent.getStringExtra("add_advice1");
+        add_advice2 = intent.getStringExtra("add_advice2");
+        add_advice3 = intent.getStringExtra("add_advice3");
+        taway_advice = intent.getStringExtra("taway_advice");
+        top_advice1 = intent.getStringExtra("top_advice1");
+        top_advice2 = intent.getStringExtra("top_advice2");
+        top_advice3 = intent.getStringExtra("top_advice3");
+        down_advice = intent.getStringExtra("down_advice");
+        imp_advice1 = intent.getStringExtra("imp_advice1");
+        imp_advice2 = intent.getStringExtra("imp_advice2");
+        imp_advice3 = intent.getStringExtra("imp_advice3");
+        slice_advice = intent.getStringExtra("slice_advice");
+        thu_advice1 = intent.getStringExtra("thu_advice1");
+        thu_advice2 = intent.getStringExtra("thu_advice2");
+        thu_advice3 = intent.getStringExtra("thu_advice3");
         pracBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -77,6 +96,24 @@ public class analysis extends AppCompatActivity {
                 Intent intent = new Intent(analysis.this,analysis_detail.class);
                 intent.putExtra("imagename", imagename);
                 intent.putExtra("score", Sscore);
+                intent.putExtra("add_advice1", add_advice1);
+                intent.putExtra("add_advice2", add_advice2);
+                intent.putExtra("add_advice3", add_advice3);
+                intent.putExtra("chiken_wing", chiken_wing);
+                intent.putExtra("body_sway", body_sway);
+                intent.putExtra("finish_advice", finish_advice);
+                intent.putExtra("taway_advice", taway_advice);
+                intent.putExtra("top_advice1", top_advice1);
+                intent.putExtra("top_advice2", top_advice2);
+                intent.putExtra("top_advice3", top_advice3);
+                intent.putExtra("down_advice", down_advice);
+                intent.putExtra("imp_advice1", imp_advice1);
+                intent.putExtra("imp_advice2", imp_advice2);
+                intent.putExtra("imp_advice3", imp_advice3);
+                intent.putExtra("slice_advice", slice_advice);
+                intent.putExtra("thu_advice1", thu_advice1);
+                intent.putExtra("thu_advice2", thu_advice2);
+                intent.putExtra("thu_advice3", thu_advice3);
                 startActivity(intent);
                 finish();
             }
@@ -114,6 +151,24 @@ public class analysis extends AppCompatActivity {
                         Intent intent = new Intent(analysis.this,PracticeNote.class);
                         intent.putExtra("imagename", imagename);
                         intent.putExtra("score", Sscore);
+                        intent.putExtra("add_advice1", add_advice1);
+                        intent.putExtra("add_advice2", add_advice2);
+                        intent.putExtra("add_advice3", add_advice3);
+                        intent.putExtra("chiken_wing", chiken_wing);
+                        intent.putExtra("body_sway", body_sway);
+                        intent.putExtra("finish_advice", finish_advice);
+                        intent.putExtra("taway_advice", taway_advice);
+                        intent.putExtra("top_advice1", top_advice1);
+                        intent.putExtra("top_advice2", top_advice2);
+                        intent.putExtra("top_advice3", top_advice3);
+                        intent.putExtra("down_advice", down_advice);
+                        intent.putExtra("imp_advice1", imp_advice1);
+                        intent.putExtra("imp_advice2", imp_advice2);
+                        intent.putExtra("imp_advice3", imp_advice3);
+                        intent.putExtra("slice_advice", slice_advice);
+                        intent.putExtra("thu_advice1", thu_advice1);
+                        intent.putExtra("thu_advice2", thu_advice2);
+                        intent.putExtra("thu_advice3", thu_advice3);
                         startActivity(intent);
                         finish();
                     }
