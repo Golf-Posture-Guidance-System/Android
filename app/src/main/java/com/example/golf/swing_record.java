@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -33,11 +34,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class swing_record extends AppCompatActivity implements SurfaceHolder.Callback {
     CountDownTimer swingTimer, readyTimer;
     TextView time_text, ready_text;
     ProgressBar progressBar;
+    TextToSpeech tts;
     public static Context context_main;
     int i = 0;
     final int READYTIME = 4000;
@@ -61,6 +64,14 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                 .setDeniedMessage("권한이 거부되었습니다. 설정 > 권한에서 허용해주세요.")
                 .setPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
                 .check();
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status!=android.speech.tts.TextToSpeech.ERROR) {
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
 
         final ToggleButton tbtn = (ToggleButton) this.findViewById(R.id.recordBtn);
         tbtn.setOnClickListener(v -> {
@@ -76,6 +87,11 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                                 getResources().getDrawable(R.drawable.ic_stop)
                         );
                         Toast.makeText(swing_record.this, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
+                        String totalSpeak = "스윙을 시작해주세요.";
+                        tts.setPitch(1.0f);
+                        tts.setSpeechRate(1.0f); 
+                        tts.speak(totalSpeak, TextToSpeech.QUEUE_FLUSH, null);
+
                         try {
                             long now = System.currentTimeMillis();
                             Date mDate = new Date(now);
@@ -177,6 +193,10 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                 @Override
                 public void onFinish() { //시간이 다 되면 자동 녹화종료 -> 화면 넘어감
                     if(finish) {
+                        String totalSpeak = "스윙을 종료합니다.";
+                        tts.setPitch(1.0f);
+                        tts.setSpeechRate(1.0f);
+                        tts.speak(totalSpeak, TextToSpeech.QUEUE_FLUSH, null);
                         mediaRecorder.stop();
                         Intent intent = new Intent();
                         intent.putExtra("filepath", filepath);
