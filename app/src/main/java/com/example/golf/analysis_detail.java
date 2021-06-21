@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.io.File;
 
 public class analysis_detail extends AppCompatActivity implements View.OnClickListener{
+
     private Button backBtn, mainBtn;
     private Button poseBtn[] = new Button[7];
     private Integer [] RidBtn = {
@@ -34,6 +35,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_detail);
+
         imageView = (ImageView)findViewById(R.id.poseimg);
         address = (TextView)findViewById(R.id.commentText);
         takeAway = (TextView)findViewById(R.id.commentText);

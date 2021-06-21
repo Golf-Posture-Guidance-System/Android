@@ -36,99 +36,106 @@
 
     </LinearLayout>
 
-<LinearLayout
-    android:id="@+id/second"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/first"
-    android:gravity="center_horizontal">
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Btn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Down"
-        android:background="@drawable/background_transparent"/>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Btn5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Impact"
-        android:background="@drawable/background_transparent"/>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Btn6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Follow"
-        android:background="@drawable/background_transparent"/>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Btn7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="finish"
-        android:background="@drawable/background_transparent"/>
-
-
-</LinearLayout>
-
     <LinearLayout
-        android:id="@+id/golfTip"
+        android:id="@+id/second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:layout_marginTop="22dp"
-        android:layout_below="@+id/second">
+        android:layout_below="@+id/first"
+        android:gravity="center_horizontal">
 
-        <ImageView
-            android:id="@+id/poseimg"
-            android:layout_width="310dp"
-            android:layout_height="330dp"
-            android:background="@drawable/golf_image_border"/>
-
-        <TextView
-            android:layout_marginTop="22dp"
-            android:id="@+id/commentText"
-            android:layout_width="310dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/onyx"
-            android:textSize="18sp"
-            android:text="@string/tip"/>
-
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Btn4"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/golfTip"
-            >
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/backBtn"
-                android:layout_width="130dp"
-                android:layout_height="45dp"
-                android:background="@drawable/rounded_green"
-                android:text="이전 화면"
-                android:textColor="@color/white"
-                />
+            android:layout_height="wrap_content"
+            android:text="Down"
+            android:background="@drawable/background_transparent"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Impact"
+            android:background="@drawable/background_transparent"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Follow"
+            android:background="@drawable/background_transparent"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/Btn7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="finish"
+            android:background="@drawable/background_transparent"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/backToMainBtn"
-                android:layout_width="130dp"
-                android:layout_height="45dp"
-                android:background="@drawable/rounded_dark"
-                android:text="메인 메뉴"
-                android:textColor="@color/white"
-                android:layout_marginLeft="52dp"/>
 
-        </LinearLayout>
     </LinearLayout>
 
+    <ScrollView
 
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:layout_below="@+id/second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:paddingTop="20dp"
+            android:id="@+id/golfTip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            >
 
+            <ImageView
+                android:layout_marginBottom="50dp"
+                android:id="@+id/poseimg"
+                android:layout_width="300dp"
+                android:layout_height="320dp"
+                android:background="@drawable/golf_image_border"/>
 
+            <TextView
+                android:layout_marginTop="-20dp"
+                android:id="@+id/commentText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/onyx"
+                android:textSize="18sp"
+                android:text="@string/tip"/>
 
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="130dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/rounded_green"
+                    android:text="이전 화면"
+                    android:layout_marginRight="50dp"
+                    android:textColor="@color/white"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/backToMainBtn"
+                    android:layout_width="130dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/rounded_dark"
+                    android:text="메인 메뉴"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </RelativeLayout>

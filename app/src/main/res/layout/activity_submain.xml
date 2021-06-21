@@ -43,6 +43,7 @@
         android:layout_below="@+id/logo_seng"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
+        android:paddingBottom="15dp"
         android:text="골프 자세를 알고\n나를 알자!"
         android:gravity="center_horizontal"
         android:textSize="18sp"
