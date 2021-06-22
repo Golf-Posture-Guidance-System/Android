@@ -197,11 +197,17 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                         tts.setPitch(1.0f);
                         tts.setSpeechRate(1.0f);
                         tts.speak(totalSpeak, TextToSpeech.QUEUE_FLUSH, null);
-                        mediaRecorder.stop();
-                        Intent intent = new Intent();
-                        intent.putExtra("filepath", filepath);
-                        setResult(RESULT_OK, intent);
-                        finish();
+
+                        Handler mHandler = new Handler();
+                        mHandler.postDelayed(new Runnable()  {
+                            public void run() {
+                                mediaRecorder.stop();
+                                Intent intent = new Intent();
+                                intent.putExtra("filepath", filepath);
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            }
+                        }, 1200);
                     }
                 }
             }.start();
