@@ -153,6 +153,8 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                     top.append(top_advice2 + "\n\n");
                 if(!top_advice3.equals(""))
                     top.append(top_advice3 + "\n\n");
+                if(!top_advice4.equals(""))
+                    top.append(top_advice4 + "\n\n");
                 if(!slice_advice.equals(""))
                     top.append(slice_advice);
                 break;
@@ -164,6 +166,8 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 down.append("\n\n");
                 if(!down_advice.equals(""))
                     down.append(down_advice);
+                if(!down_advice2.equals(""))
+                    down.append(down_advice2);
                 break;
             case R.id.Btn5:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '4' + ".jpg");
