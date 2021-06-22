@@ -20,9 +20,10 @@
         android:theme="@style/Theme.Golf"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
+        <activity android:name=".Error"></activity>
         <activity android:name=".loading" />
-        <activity android:name=".analysis_detail"/>
-        <activity android:name=".swing_record"></activity>
+        <activity android:name=".analysis_detail" />
+        <activity android:name=".swing_record" />
         <activity android:name=".PracticeNote" />
         <activity android:name=".MainMenu" />
         <activity android:name=".MainActivity">
