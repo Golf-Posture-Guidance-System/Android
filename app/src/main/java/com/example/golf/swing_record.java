@@ -44,7 +44,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     public static Context context_main;
     int i = 0;
     final int READYTIME = 4000;
-    final int TOTALTIME = 15000;
+    final int TOTALTIME = 5000;
     final int COUNT_DOWN_INTERVAL = 1000;
     private Camera camera;
     private MediaRecorder mediaRecorder;

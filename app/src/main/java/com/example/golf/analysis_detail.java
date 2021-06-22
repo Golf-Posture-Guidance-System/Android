@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -118,79 +119,87 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '0' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
-                address.setText(R.string.address + "\n");
-                if(!add_advice1.equals(null))
-                    address.append(add_advice1 + "\n");
-                if(!add_advice2.equals(null))
-                    address.append(add_advice2 + "\n");
-                if(!add_advice3.equals(null))
-                    address.append(add_advice3 + "\n");
+                address.setText(R.string.address);
+                address.append("\n\n");
+                if(!add_advice1.equals(""))
+                    address.append(add_advice1 + "\n\n");
+                if(!add_advice2.equals(""))
+                    address.append(add_advice2 + "\n\n");
+                if(!add_advice3.equals(""))
+                    address.append(add_advice3);
                 break;
             case R.id.Btn2:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '1' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
-                takeAway.setText(R.string.takeAway + "\n");
-                if(!taway_advice.equals(null))
-                    takeAway.append(taway_advice + "\n");
+                takeAway.setText(R.string.takeAway);
+                takeAway.append("\n\n");
+                if(!taway_advice.equals(""))
+                    takeAway.append(taway_advice);
                 break;
             case R.id.Btn3:
                 f = new File("/sdcard/" + userid + "/image/" +imagename + '2' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
-                top.setText(R.string.top + "\n");
-                if(!top_advice1.equals(null))
-                    top.append(top_advice1 + "\n");
-                if(!top_advice2.equals(null))
-                    top.append(top_advice2 + "\n");
-                if(!top_advice3.equals(null))
-                    top.append(top_advice3 + "\n");
-                if(!slice_advice.equals(null))
-                    top.append(slice_advice + "\n");
+                top.setText(R.string.top);
+                top.append("\n\n");
+                if(!top_advice1.equals(""))
+                    top.append(top_advice1 + "\n\n");
+                if(!top_advice2.equals(""))
+                    top.append(top_advice2 + "\n\n");
+                if(!top_advice3.equals(""))
+                    top.append(top_advice3 + "\n\n");
+                if(!slice_advice.equals(""))
+                    top.append(slice_advice);
                 break;
             case R.id.Btn4:
                 f = new File("/sdcard/" + userid + "/image/" +imagename + '3' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
-                down.setText(R.string.down + "\n");
-                if(!down_advice.equals(null))
-                    down.append(down_advice + "\n");
+                down.setText(R.string.down );
+                down.append("\n\n");
+                if(!down_advice.equals(""))
+                    down.append(down_advice);
                 break;
             case R.id.Btn5:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '4' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 impact.setText(R.string.impact);
-                if(!imp_advice1.equals(null))
-                    impact.append(imp_advice1 + "\n");
-                if(!imp_advice2.equals(null))
-                    impact.append(imp_advice2 + "\n");
-                if(!imp_advice3.equals(null))
-                    impact.append(imp_advice3 + "\n");
+                impact.append("\n\n");
+                if(!imp_advice1.equals(""))
+                    impact.append(imp_advice1 + "\n\n");
+                if(!imp_advice2.equals(""))
+                    impact.append(imp_advice2 + "\n\n");
+                if(!imp_advice3.equals(""))
+                    impact.append(imp_advice3);
                 break;
             case R.id.Btn6:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '5' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
-                followThru.setText(R.string.followThru + "\n");
-                if(!top_advice1.equals(null))
-                    followThru.append(top_advice1 + "\n");
-                if(!top_advice2.equals(null))
-                    followThru.append(top_advice2 + "\n");
-                if(!top_advice3.equals(null))
-                    followThru.append(top_advice3 + "\n");
-                if(!chiken_wing.equals(null))
-                    followThru.append(chiken_wing + "\n");
-                if(!body_sway.equals(null))
-                    followThru.append(body_sway + "\n");
+                followThru.setText(R.string.followThru);
+                followThru.append("\n\n");
+                Log.d("asd",chiken_wing);
+                if(!top_advice1.equals(""))
+                    followThru.append(top_advice1 + "\n\n");
+                if(!top_advice2.equals(""))
+                    followThru.append(top_advice2 + "\n\n");
+                if(!top_advice3.equals(""))
+                    followThru.append(top_advice3 + "\n\n");
+                if(!chiken_wing.equals(""))
+                    followThru.append(chiken_wing + "\n\n");
+                if(!body_sway.equals(""))
+                    followThru.append(body_sway);
                 break;
             case R.id.Btn7:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '6' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
-                finish.setText(R.string.finish + "\n");
-                if(!finish_advice.equals(null))
-                    finish.append(finish_advice + "\n");
+                finish.setText(R.string.finish);
+                finish.append("\n\n");
+                if(!finish_advice.equals(""))
+                    finish.append(finish_advice);
                 break;
         }
     }

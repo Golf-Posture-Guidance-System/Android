@@ -367,6 +367,7 @@ public class PracticeNote extends AppCompatActivity {
             writer6.write(body_sway);
             writer6.newLine();
             writer6.write(chiken_wing);
+            writer6.newLine();
             writer6.flush();
             writer6.close();
             fos6.close();
