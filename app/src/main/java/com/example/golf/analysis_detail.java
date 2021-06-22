@@ -26,7 +26,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     private ImageView pose_img;
     Intent intent;
     String userid,imagename,score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4 , down_advice2;
     File f;
     Bitmap myBitmap;
     ImageView imageView;
@@ -61,7 +61,9 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         top_advice1 = intent.getStringExtra("top_advice1");
         top_advice2 = intent.getStringExtra("top_advice2");
         top_advice3 = intent.getStringExtra("top_advice3");
+        top_advice4 = intent.getStringExtra("top_advice4");
         down_advice = intent.getStringExtra("down_advice");
+        down_advice2 = intent.getStringExtra("down_advice2");
         imp_advice1 = intent.getStringExtra("imp_advice1");
         imp_advice2 = intent.getStringExtra("imp_advice2");
         imp_advice3 = intent.getStringExtra("imp_advice3");
@@ -91,7 +93,9 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 intent.putExtra("top_advice1", top_advice1);
                 intent.putExtra("top_advice2", top_advice2);
                 intent.putExtra("top_advice3", top_advice3);
+                intent.putExtra("top_advice4", top_advice4);
                 intent.putExtra("down_advice", down_advice);
+                intent.putExtra("down_advice2", down_advice2);
                 intent.putExtra("imp_advice1", imp_advice1);
                 intent.putExtra("imp_advice2", imp_advice2);
                 intent.putExtra("imp_advice3", imp_advice3);

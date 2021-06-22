@@ -34,7 +34,7 @@ public class PracticeNote extends AppCompatActivity {
     String getTime;
     File savefile1,savefile2,savefile3,savefile4,savefile5;
     String imagename, score, userid,  add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing;;
+            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +66,9 @@ public class PracticeNote extends AppCompatActivity {
         top_advice1 = intent.getStringExtra("top_advice1");
         top_advice2 = intent.getStringExtra("top_advice2");
         top_advice3 = intent.getStringExtra("top_advice3");
+        top_advice4 = intent.getStringExtra("top_advice4");
         down_advice = intent.getStringExtra("down_advice");
+        down_advice2 = intent.getStringExtra("down_advice2");
         imp_advice1 = intent.getStringExtra("imp_advice1");
         imp_advice2 = intent.getStringExtra("imp_advice2");
         imp_advice3 = intent.getStringExtra("imp_advice3");
@@ -139,7 +141,9 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("top_advice1", top_advice1);
                     intent.putExtra("top_advice2", top_advice2);
                     intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("top_advice4", top_advice4);
                     intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("down_advice2", down_advice2);
                     intent.putExtra("imp_advice1", imp_advice1);
                     intent.putExtra("imp_advice2", imp_advice2);
                     intent.putExtra("imp_advice3", imp_advice3);
@@ -173,7 +177,9 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("top_advice1", top_advice1);
                     intent.putExtra("top_advice2", top_advice2);
                     intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("top_advice4", top_advice4);
                     intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("down_advice2", down_advice2);
                     intent.putExtra("imp_advice1", imp_advice1);
                     intent.putExtra("imp_advice2", imp_advice2);
                     intent.putExtra("imp_advice3", imp_advice3);
@@ -194,8 +200,6 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("3");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
-                    intent.putExtra("imagename", imagename);
-                    intent.putExtra("score", score);
                     intent.putExtra("add_advice1", add_advice1);
                     intent.putExtra("add_advice2", add_advice2);
                     intent.putExtra("add_advice3", add_advice3);
@@ -206,7 +210,9 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("top_advice1", top_advice1);
                     intent.putExtra("top_advice2", top_advice2);
                     intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("top_advice4", top_advice4);
                     intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("down_advice2", down_advice2);
                     intent.putExtra("imp_advice1", imp_advice1);
                     intent.putExtra("imp_advice2", imp_advice2);
                     intent.putExtra("imp_advice3", imp_advice3);
@@ -227,8 +233,6 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("4");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
-                    intent.putExtra("imagename", imagename);
-                    intent.putExtra("score", score);
                     intent.putExtra("add_advice1", add_advice1);
                     intent.putExtra("add_advice2", add_advice2);
                     intent.putExtra("add_advice3", add_advice3);
@@ -239,7 +243,9 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("top_advice1", top_advice1);
                     intent.putExtra("top_advice2", top_advice2);
                     intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("top_advice4", top_advice4);
                     intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("down_advice2", down_advice2);
                     intent.putExtra("imp_advice1", imp_advice1);
                     intent.putExtra("imp_advice2", imp_advice2);
                     intent.putExtra("imp_advice3", imp_advice3);
@@ -260,8 +266,6 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("5");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
-                    intent.putExtra("imagename", imagename);
-                    intent.putExtra("score", score);
                     intent.putExtra("add_advice1", add_advice1);
                     intent.putExtra("add_advice2", add_advice2);
                     intent.putExtra("add_advice3", add_advice3);
@@ -272,7 +276,9 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("top_advice1", top_advice1);
                     intent.putExtra("top_advice2", top_advice2);
                     intent.putExtra("top_advice3", top_advice3);
+                    intent.putExtra("top_advice4", top_advice4);
                     intent.putExtra("down_advice", down_advice);
+                    intent.putExtra("down_advice2", down_advice2);
                     intent.putExtra("imp_advice1", imp_advice1);
                     intent.putExtra("imp_advice2", imp_advice2);
                     intent.putExtra("imp_advice3", imp_advice3);
@@ -330,6 +336,8 @@ public class PracticeNote extends AppCompatActivity {
             writer3.newLine();
             writer3.write(top_advice3);
             writer3.newLine();
+            writer3.write(top_advice4);
+            writer3.newLine();
             writer3.write(slice_advice);
             writer3.newLine();
             writer3.flush();
@@ -339,6 +347,8 @@ public class PracticeNote extends AppCompatActivity {
             //파일쓰기
             BufferedWriter writer4 = new BufferedWriter(new OutputStreamWriter(fos4));
             writer4.write(down_advice);
+            writer4.newLine();
+            writer4.write(down_advice2);
             writer4.newLine();
             writer4.flush();
             writer4.close();
@@ -406,11 +416,13 @@ public class PracticeNote extends AppCompatActivity {
             top_advice1=buf3.readLine();
             top_advice2=buf3.readLine();
             top_advice3=buf3.readLine();
+            top_advice4=buf3.readLine();
             slice_advice=buf3.readLine();
             buf3.close();
 
             BufferedReader buf4 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/downfeedback.txt"));
             down_advice=buf4.readLine();
+            down_advice2=buf4.readLine();
             buf4.close();
 
             BufferedReader buf5 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/impactback.txt"));

@@ -63,8 +63,8 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     File f1;
     private String userChoosenTask;
     Uri VideoUri;
-    String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing;
+    String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, top_advice4, down_advice, imp_advice1,
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2;
     private Uri mImageUri;
     private int REQUEST_CAMERA;
     String imagename;
@@ -222,7 +222,9 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                                 top_advice1 = jsonObject.getString("top_advice1");
                                 top_advice2 = jsonObject.getString("top_advice2");
                                 top_advice3 = jsonObject.getString("top_advice3");
+                                top_advice4 = jsonObject.getString("top_advice4");
                                 down_advice = jsonObject.getString("down_advice");
+                                down_advice2 = jsonObject.getString("down_advice2");
                                 imp_advice1 = jsonObject.getString("imp_advice1");
                                 imp_advice2 = jsonObject.getString("imp_advice2");
                                 imp_advice3 = jsonObject.getString("imp_advice3");
@@ -330,7 +332,9 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("top_advice1", top_advice1);
                 intent.putExtra("top_advice2", top_advice2);
                 intent.putExtra("top_advice3", top_advice3);
+                intent.putExtra("top_advice4", top_advice4);
                 intent.putExtra("down_advice", down_advice);
+                intent.putExtra("down_advice2", down_advice2);
                 intent.putExtra("imp_advice1", imp_advice1);
                 intent.putExtra("imp_advice2", imp_advice2);
                 intent.putExtra("imp_advice3", imp_advice3);
