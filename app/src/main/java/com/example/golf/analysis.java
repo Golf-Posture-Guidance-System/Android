@@ -49,10 +49,10 @@ public class analysis extends AppCompatActivity {
     TransferUtility transferUtility;
     File f;
     String imagename, Sscore,userid, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2, worst;
     FileOutputStream fos =null;
     ImageView imageView;
-    TextView score;
+    TextView score, feedback;
     int num = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +62,7 @@ public class analysis extends AppCompatActivity {
         detailBtn = (Button)findViewById(R.id.detailBtn);
         backBtn =(ImageButton) findViewById(R.id.backBtn);
         score =(TextView) findViewById(R.id.score);
+        feedback = (TextView) findViewById(R.id.comment);
         Intent intent = getIntent();
         userid = ((login)login.context_main).userid;
         imagename =  intent.getStringExtra("imagename");
@@ -86,6 +87,7 @@ public class analysis extends AppCompatActivity {
         thu_advice1 = intent.getStringExtra("thu_advice1");
         thu_advice2 = intent.getStringExtra("thu_advice2");
         thu_advice3 = intent.getStringExtra("thu_advice3");
+        worst = intent.getStringExtra("worst");
         pracBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -118,6 +120,7 @@ public class analysis extends AppCompatActivity {
                 intent.putExtra("thu_advice1", thu_advice1);
                 intent.putExtra("thu_advice2", thu_advice2);
                 intent.putExtra("thu_advice3", thu_advice3);
+                intent.putExtra("worst", worst);
                 startActivity(intent);
                 finish();
             }
@@ -135,10 +138,85 @@ public class analysis extends AppCompatActivity {
     public void analysisImage()
     {
         score.setText(Sscore);
-        String Strnum = Integer.toString(num);
-        f = new File("/sdcard/" + userid +"/image/" + imagename + Strnum + ".jpg");
+        f = new File("/sdcard/" + userid +"/image/" + imagename + worst + ".jpg");
         Bitmap myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
         imageView.setImageBitmap(myBitmap);
+        if(worst.equals("0"))
+        {
+            feedback.setText(R.string.address);
+            feedback.append("\n\n");
+            if(!add_advice1.equals(""))
+                feedback.append(add_advice1 + "\n\n");
+            if(!add_advice2.equals(""))
+                feedback.append(add_advice2 + "\n\n");
+            if(!add_advice3.equals(""))
+                feedback.append(add_advice3);
+        }
+        if(worst.equals("1"))
+        {
+            feedback.setText(R.string.takeAway);
+            feedback.append("\n\n");
+            if(!taway_advice.equals(""))
+                feedback.append(taway_advice);
+        }
+        if(worst.equals("2"))
+        {
+            feedback.setText(R.string.top);
+            feedback.append("\n\n");
+            if(!top_advice1.equals(""))
+                feedback.append(top_advice1 + "\n\n");
+            if(!top_advice2.equals(""))
+                feedback.append(top_advice2 + "\n\n");
+            if(!top_advice3.equals(""))
+                feedback.append(top_advice3 + "\n\n");
+            if(!top_advice4.equals(""))
+                feedback.append(top_advice4 + "\n\n");
+            if(!slice_advice.equals(""))
+                feedback.append(slice_advice);
+        }
+        if(worst.equals("3"))
+        {
+            feedback.setText(R.string.down );
+            feedback.append("\n\n");
+            if(!down_advice.equals(""))
+                feedback.append(down_advice + "\n\n");
+            if(!down_advice2.equals(""))
+                feedback.append(down_advice2);
+        }
+        if(worst.equals("4"))
+        {
+            feedback.setText(R.string.impact);
+            feedback.append("\n\n");
+            if(!imp_advice1.equals(""))
+                feedback.append(imp_advice1 + "\n\n");
+            if(!imp_advice2.equals(""))
+                feedback.append(imp_advice2 + "\n\n");
+            if(!imp_advice3.equals(""))
+                feedback.append(imp_advice3);
+        }
+        if(worst.equals("5"))
+        {
+            feedback.setText(R.string.followThru);
+            feedback.append("\n\n");
+            Log.d("asd",chiken_wing);
+            if(!top_advice1.equals(""))
+                feedback.append(thu_advice1 + "\n\n");
+            if(!top_advice2.equals(""))
+                feedback.append(thu_advice2 + "\n\n");
+            if(!top_advice3.equals(""))
+                feedback.append(thu_advice3 + "\n\n");
+            if(!chiken_wing.equals(""))
+                feedback.append(chiken_wing + "\n\n");
+            if(!body_sway.equals(""))
+                feedback.append(body_sway);
+        }
+        if(worst.equals("6"))
+        {
+            feedback.setText(R.string.finish);
+            feedback.append("\n\n");
+            if(!finish_advice.equals(""))
+                feedback.append(finish_advice);
+        }
     }
     public void pracNote() {
         final CharSequence[] items = {"현재스윙 기록하기", "이전 기록내용 보기",
@@ -175,6 +253,7 @@ public class analysis extends AppCompatActivity {
                         intent.putExtra("thu_advice1", thu_advice1);
                         intent.putExtra("thu_advice2", thu_advice2);
                         intent.putExtra("thu_advice3", thu_advice3);
+                        intent.putExtra("worst", worst);
                         startActivity(intent);
                         finish();
                     }

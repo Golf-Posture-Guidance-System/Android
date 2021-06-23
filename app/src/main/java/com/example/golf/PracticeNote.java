@@ -34,7 +34,7 @@ public class PracticeNote extends AppCompatActivity {
     String getTime;
     File savefile1,savefile2,savefile3,savefile4,savefile5;
     String imagename, score, userid,  add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2;
+            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2 ,worst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,7 @@ public class PracticeNote extends AppCompatActivity {
         thu_advice1 = intent.getStringExtra("thu_advice1");
         thu_advice2 = intent.getStringExtra("thu_advice2");
         thu_advice3 = intent.getStringExtra("thu_advice3");
+        worst = intent.getStringExtra("worst");
         add();
         backBtn =(ImageButton)findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +152,7 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("thu_advice1", thu_advice1);
                     intent.putExtra("thu_advice2", thu_advice2);
                     intent.putExtra("thu_advice3", thu_advice3);
+                    intent.putExtra("worst", worst);
                     startActivity(intent);
                     finish();
                 }
@@ -187,6 +189,7 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("thu_advice1", thu_advice1);
                     intent.putExtra("thu_advice2", thu_advice2);
                     intent.putExtra("thu_advice3", thu_advice3);
+                    intent.putExtra("worst", worst);
                     startActivity(intent);
                     finish();
                 }
@@ -220,6 +223,7 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("thu_advice1", thu_advice1);
                     intent.putExtra("thu_advice2", thu_advice2);
                     intent.putExtra("thu_advice3", thu_advice3);
+                    intent.putExtra("worst", worst);
                     startActivity(intent);
                     finish();
                 }
@@ -253,6 +257,7 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("thu_advice1", thu_advice1);
                     intent.putExtra("thu_advice2", thu_advice2);
                     intent.putExtra("thu_advice3", thu_advice3);
+                    intent.putExtra("worst", worst);
                     startActivity(intent);
                     finish();
                 }
@@ -286,6 +291,7 @@ public class PracticeNote extends AppCompatActivity {
                     intent.putExtra("thu_advice1", thu_advice1);
                     intent.putExtra("thu_advice2", thu_advice2);
                     intent.putExtra("thu_advice3", thu_advice3);
+                    intent.putExtra("worst", worst);
                     startActivity(intent);
                     finish();
                 }
@@ -303,6 +309,8 @@ public class PracticeNote extends AppCompatActivity {
             writer.write(imagename);
             writer.newLine();
             writer.write(score);
+            writer.newLine();
+            writer.write(worst);
             writer.newLine();
             writer.flush();
             writer.close();
@@ -400,6 +408,7 @@ public class PracticeNote extends AppCompatActivity {
             getTime=buf.readLine();
             imagename=buf.readLine();
             score=buf.readLine();
+            worst=buf.readLine();
             buf.close();
 
             BufferedReader buf1 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/adressfeedback.txt"));

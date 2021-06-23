@@ -64,7 +64,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     private String userChoosenTask;
     Uri VideoUri;
     String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, top_advice4, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2, worst;
     String error = "0";
     private Uri mImageUri;
     private int REQUEST_CAMERA;
@@ -164,7 +164,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                                 num++;
                             }
                         }
-                    }, 30000); //딜레이 타임 조절
+                    }, 35000); //딜레이 타임 조절
                             Intent intent = new Intent(videoPreview.this,loading.class);
                             startActivityForResult(intent,123);
                     break;
@@ -235,6 +235,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                                 thu_advice1 = jsonObject.getString("thu_advice1");
                                 thu_advice2 = jsonObject.getString("thu_advice2");
                                 thu_advice3 = jsonObject.getString("thu_advice3");
+                                worst = jsonObject.getString("worst");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -352,6 +353,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("thu_advice1", thu_advice1);
                 intent.putExtra("thu_advice2", thu_advice2);
                 intent.putExtra("thu_advice3", thu_advice3);
+                intent.putExtra("worst", worst);
                 startActivity(intent);
                 finish();
             }

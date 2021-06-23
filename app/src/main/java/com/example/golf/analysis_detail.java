@@ -26,7 +26,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     private ImageView pose_img;
     Intent intent;
     String userid,imagename,score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4 , down_advice2;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4 , down_advice2,worst;
     File f;
     Bitmap myBitmap;
     ImageView imageView;
@@ -71,6 +71,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         thu_advice1 = intent.getStringExtra("thu_advice1");
         thu_advice2 = intent.getStringExtra("thu_advice2");
         thu_advice3 = intent.getStringExtra("thu_advice3");
+        worst = intent.getStringExtra("worst");
 
         for ( int i=0;i<7;i++) {
             poseBtn[i] = (Button) findViewById(RidBtn[i]);
@@ -103,6 +104,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 intent.putExtra("thu_advice1", thu_advice1);
                 intent.putExtra("thu_advice2", thu_advice2);
                 intent.putExtra("thu_advice3", thu_advice3);
+                intent.putExtra("worst", worst);
                 startActivity(intent);
                 finish();
             }
@@ -189,12 +191,12 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 followThru.setText(R.string.followThru);
                 followThru.append("\n\n");
                 Log.d("asd",chiken_wing);
-                if(!top_advice1.equals(""))
-                    followThru.append(top_advice1 + "\n\n");
-                if(!top_advice2.equals(""))
-                    followThru.append(top_advice2 + "\n\n");
-                if(!top_advice3.equals(""))
-                    followThru.append(top_advice3 + "\n\n");
+                if(!thu_advice1.equals(""))
+                    followThru.append(thu_advice1 + "\n\n");
+                if(!thu_advice2.equals(""))
+                    followThru.append(thu_advice2 + "\n\n");
+                if(!thu_advice3.equals(""))
+                    followThru.append(thu_advice3 + "\n\n");
                 if(!chiken_wing.equals(""))
                     followThru.append(chiken_wing + "\n\n");
                 if(!body_sway.equals(""))
