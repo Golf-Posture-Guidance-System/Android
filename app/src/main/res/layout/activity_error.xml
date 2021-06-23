@@ -48,4 +48,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:textSize="15sp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/retrybtn"
+        android:layout_below="@+id/t4"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:background="@drawable/checkbutton"
+        android:text="다시 분석하기"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        />
 </RelativeLayout>

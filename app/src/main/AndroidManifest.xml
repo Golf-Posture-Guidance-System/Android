@@ -23,7 +23,9 @@
         <activity android:name=".Error"></activity>
         <activity android:name=".loading" />
         <activity android:name=".analysis_detail" />
-        <activity android:name=".swing_record" />
+        <activity android:name=".swing_record"
+            android:screenOrientation="landscape">
+        </activity>
         <activity android:name=".PracticeNote" />
         <activity android:name=".MainMenu" />
         <activity android:name=".MainActivity">

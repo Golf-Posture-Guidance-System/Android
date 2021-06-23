@@ -65,6 +65,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     Uri VideoUri;
     String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, top_advice4, down_advice, imp_advice1,
             imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2;
+    String error = "0";
     private Uri mImageUri;
     private int REQUEST_CAMERA;
     String imagename;
@@ -210,7 +211,9 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void run() {
                             try {
+
                                 JSONObject jsonObject = new JSONObject(response.body().string());
+                                error = jsonObject.getString("error");
                                 score = jsonObject.getString("score");
                                 chiken_wing = jsonObject.getString("chiken_wing");
                                 body_sway = jsonObject.getString("body_sway");
@@ -306,7 +309,14 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
+        Log.d("zxczxc",error);
+        if(error.equals("-1"))
+        {
+            Intent intent = new Intent(videoPreview.this,Error.class);
+            startActivity(intent);
+            finish();
+        }
+        else if (resultCode == Activity.RESULT_OK) {
             if (requestCode == SELECT_FILE) {
                 Log.d(TAG, "onActivityResult, SELECT_FILE");
                 onSelectFromGalleryResult(data, SELECT_FILE);

@@ -19,7 +19,7 @@ public class loading extends AppCompatActivity {
     TextView point;
     ImageView loading;
     AnimationDrawable animation;
-
+    String error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +31,13 @@ public class loading extends AppCompatActivity {
         animation.addFrame(getResources().getDrawable(R.drawable.ic_loading2),500);
         loading.setImageDrawable(animation);
         animation.start();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                setResult(RESULT_OK,intent);
-                finish();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setResult(RESULT_OK);
+                    finish();
                 }
-        }, 34000); //딜레이 타임 조절
-    }
+            }, 34000); //딜레이 타임 조절
+        }
 }

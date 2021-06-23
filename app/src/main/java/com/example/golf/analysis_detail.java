@@ -165,7 +165,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 down.setText(R.string.down );
                 down.append("\n\n");
                 if(!down_advice.equals(""))
-                    down.append(down_advice);
+                    down.append(down_advice + "\n\n");
                 if(!down_advice2.equals(""))
                     down.append(down_advice2);
                 break;
