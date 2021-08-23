@@ -4,61 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_green"
     tools:context=".Error">
 
+    <ImageView
+        android:id="@+id/errorImg"
+        android:layout_width="220dp"
+        android:layout_height="250dp"
+        android:background="@drawable/ic_error"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        />
+
     <TextView
-        android:id="@+id/t1"
-        android:layout_marginTop="55dp"
+        android:id="@+id/errorText"
+        android:layout_below="@+id/errorImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="포즈를 감지 할 수 없습니다."
+        android:layout_centerHorizontal="true"
+        android:text="ERROR!"
         android:textStyle="bold"
-        android:textColor="@color/green"
+        android:textSize="50sp"
+        android:textColor="#FF0000"/>
+
+
+    <TextView
+        android:id="@+id/error1"
+        android:layout_below="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="포즈를 감지할 수 없습니다."
+        android:textStyle="bold"
+        android:textColor="@color/onyx"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="32sp" />
 
     <TextView
-        android:id="@+id/t2"
+        android:id="@+id/error2"
+        android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/t1"
+        android:layout_below="@+id/error1"
         android:text="다음을 체크해보세요."
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textSize="15sp"/>
-    <TextView
-        android:id="@+id/t3"
-        android:layout_below="@+id/t2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1.옷과 배경 색이 유사한 경우 인식이 안됩니다."
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textSize="15sp"/>
-    <TextView
-        android:id="@+id/t4"
-        android:layout_below="@+id/t3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2.옷이 손 모양을 많이 가리면 인식이 힘듭니다."
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:textSize="15sp"/>
 
+    <FrameLayout
+        android:id="@+id/box"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/error2"
+        android:layout_centerHorizontal="true"
+        >
+        <ImageView
+            android:layout_width="320dp"
+            android:layout_height="105dp"
+            android:background="@drawable/background"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_marginHorizontal="15dp"
+                android:id="@+id/t3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. 옷과 배경 색이 유사한 경우 인식이 안됩니다."
+                android:layout_marginTop="15dp"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/t4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.옷이 손 모양을 많이 가리면 인식이 힘듭니다."
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="15dp"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/retrybtn"
-        android:layout_below="@+id/t4"
         android:layout_width="130dp"
         android:layout_height="45dp"
         android:background="@drawable/checkbutton"
         android:text="다시 분석하기"
+        android:layout_marginBottom="50dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_alignParentBottom="true"
         android:textColor="@color/white"
         />
 </RelativeLayout>
