@@ -105,7 +105,31 @@
                 android:textColor="@color/onyx"
                 android:textSize="18sp"
                 android:text="@string/tip"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
 
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="27sp"
+                    android:textColor="@color/green"
+                    android:text="Score : "/>
+
+                <TextView
+                    android:id="@+id/detailscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="145dp"
+                    android:text="80"
+                    android:textColor="@color/green"
+                    android:textSize="27sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
             <LinearLayout
                 android:padding="10dp"
                 android:layout_marginTop="30dp"

@@ -34,7 +34,8 @@ public class PracticeNote extends AppCompatActivity {
     String getTime;
     File savefile1,savefile2,savefile3,savefile4,savefile5;
     String imagename, score, userid,  add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2 ,worst;
+            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2 ,worst, adressscore, takebackscore, topascore,
+            iascore, truascore, fscore, dscore ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,13 @@ public class PracticeNote extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy년-MM월-dd일 hh시-mm분 스윙");
         getTime = sdf.format(date);
         Intent intent = getIntent() ;
+        adressscore =  intent.getStringExtra("adressscore");
+        takebackscore =  intent.getStringExtra("takebackscore");
+        topascore = intent.getStringExtra("topascore");
+        dscore = intent.getStringExtra("dscore");
+        iascore = intent.getStringExtra("iascore");
+        truascore = intent.getStringExtra("truascore");
+        fscore = intent.getStringExtra("fscore");
         imagename =  intent.getStringExtra("imagename");
         score =  intent.getStringExtra("score");
         chiken_wing = intent.getStringExtra("chiken_wing");
@@ -130,6 +138,13 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("1");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
+                    intent.putExtra("adressscore", adressscore);
+                    intent.putExtra("takebackscore", takebackscore);
+                    intent.putExtra("topascore", topascore);
+                    intent.putExtra("dscore", dscore);
+                    intent.putExtra("iascore", iascore);
+                    intent.putExtra("truascore", truascore);
+                    intent.putExtra("fscore", fscore);
                     intent.putExtra("imagename",imagename);
                     intent.putExtra("score",score);
                     intent.putExtra("add_advice1", add_advice1);
@@ -167,6 +182,13 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("2");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
+                    intent.putExtra("adressscore", adressscore);
+                    intent.putExtra("takebackscore", takebackscore);
+                    intent.putExtra("topascore", topascore);
+                    intent.putExtra("dscore", dscore);
+                    intent.putExtra("iascore", iascore);
+                    intent.putExtra("truascore", truascore);
+                    intent.putExtra("fscore", fscore);
                     intent.putExtra("imagename", imagename);
                     intent.putExtra("score", score);
                     intent.putExtra("add_advice1", add_advice1);
@@ -203,6 +225,13 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("3");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
+                    intent.putExtra("adressscore", adressscore);
+                    intent.putExtra("takebackscore", takebackscore);
+                    intent.putExtra("topascore", topascore);
+                    intent.putExtra("dscore", dscore);
+                    intent.putExtra("iascore", iascore);
+                    intent.putExtra("truascore", truascore);
+                    intent.putExtra("fscore", fscore);
                     intent.putExtra("add_advice1", add_advice1);
                     intent.putExtra("add_advice2", add_advice2);
                     intent.putExtra("add_advice3", add_advice3);
@@ -237,6 +266,13 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("4");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
+                    intent.putExtra("adressscore", adressscore);
+                    intent.putExtra("takebackscore", takebackscore);
+                    intent.putExtra("topascore", topascore);
+                    intent.putExtra("dscore", dscore);
+                    intent.putExtra("iascore", iascore);
+                    intent.putExtra("truascore", truascore);
+                    intent.putExtra("fscore", fscore);
                     intent.putExtra("add_advice1", add_advice1);
                     intent.putExtra("add_advice2", add_advice2);
                     intent.putExtra("add_advice3", add_advice3);
@@ -271,6 +307,13 @@ public class PracticeNote extends AppCompatActivity {
                 public void onClick(View v) {
                     readfile("5");
                     Intent intent = new Intent(PracticeNote.this, analysis.class);
+                    intent.putExtra("adressscore", adressscore);
+                    intent.putExtra("takebackscore", takebackscore);
+                    intent.putExtra("topascore", topascore);
+                    intent.putExtra("dscore", dscore);
+                    intent.putExtra("iascore", iascore);
+                    intent.putExtra("truascore", truascore);
+                    intent.putExtra("fscore", fscore);
                     intent.putExtra("add_advice1", add_advice1);
                     intent.putExtra("add_advice2", add_advice2);
                     intent.putExtra("add_advice3", add_advice3);
@@ -324,6 +367,8 @@ public class PracticeNote extends AppCompatActivity {
             writer1.newLine();
             writer1.write(add_advice3);
             writer1.newLine();
+            writer1.write(adressscore);
+            writer1.newLine();
             writer1.flush();
             writer1.close();
             fos1.close();
@@ -331,6 +376,8 @@ public class PracticeNote extends AppCompatActivity {
             //파일쓰기
             BufferedWriter writer2 = new BufferedWriter(new OutputStreamWriter(fos2));
             writer2.write(taway_advice);
+            writer2.newLine();
+            writer2.write(takebackscore);
             writer2.newLine();
             writer2.flush();
             writer2.close();
@@ -348,6 +395,8 @@ public class PracticeNote extends AppCompatActivity {
             writer3.newLine();
             writer3.write(slice_advice);
             writer3.newLine();
+            writer3.write(topascore);
+            writer3.newLine();
             writer3.flush();
             writer3.close();
             fos3.close();
@@ -357,6 +406,8 @@ public class PracticeNote extends AppCompatActivity {
             writer4.write(down_advice);
             writer4.newLine();
             writer4.write(down_advice2);
+            writer4.newLine();
+            writer4.write(dscore);
             writer4.newLine();
             writer4.flush();
             writer4.close();
@@ -369,6 +420,8 @@ public class PracticeNote extends AppCompatActivity {
             writer5.write(imp_advice2);
             writer5.newLine();
             writer5.write(imp_advice3);
+            writer5.newLine();
+            writer5.write(iascore);
             writer5.newLine();
             writer5.flush();
             writer5.close();
@@ -386,6 +439,8 @@ public class PracticeNote extends AppCompatActivity {
             writer6.newLine();
             writer6.write(chiken_wing);
             writer6.newLine();
+            writer6.write(truascore);
+            writer6.newLine();
             writer6.flush();
             writer6.close();
             fos6.close();
@@ -393,6 +448,8 @@ public class PracticeNote extends AppCompatActivity {
             //파일쓰기
             BufferedWriter writer7 = new BufferedWriter(new OutputStreamWriter(fos7));
             writer7.write(finish_advice);
+            writer7.newLine();
+            writer7.write(fscore);
             writer7.newLine();
             writer7.flush();
             writer7.close();
@@ -415,10 +472,11 @@ public class PracticeNote extends AppCompatActivity {
             add_advice1=buf1.readLine();
             add_advice2=buf1.readLine();
             add_advice3=buf1.readLine();
+            adressscore=buf1.readLine();
             buf1.close();
-
             BufferedReader buf2 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/takebackfeedback.txt"));
             taway_advice=buf2.readLine();
+            takebackscore=buf2.readLine();
             buf2.close();
 
             BufferedReader buf3 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/topfeedback.txt"));
@@ -427,17 +485,20 @@ public class PracticeNote extends AppCompatActivity {
             top_advice3=buf3.readLine();
             top_advice4=buf3.readLine();
             slice_advice=buf3.readLine();
+            topascore=buf3.readLine();
             buf3.close();
 
             BufferedReader buf4 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/downfeedback.txt"));
             down_advice=buf4.readLine();
             down_advice2=buf4.readLine();
+            dscore=buf4.readLine();
             buf4.close();
 
             BufferedReader buf5 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/impactback.txt"));
             imp_advice1=buf5.readLine();
             imp_advice2=buf5.readLine();
             imp_advice3=buf5.readLine();
+            iascore=buf5.readLine();
             buf5.close();
 
             BufferedReader buf6 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/followfeedback.txt"));
@@ -446,10 +507,12 @@ public class PracticeNote extends AppCompatActivity {
             thu_advice3=buf6.readLine();
             body_sway=buf6.readLine();
             chiken_wing=buf6.readLine();
+            truascore=buf6.readLine();
             buf6.close();
 
             BufferedReader buf7 = new BufferedReader(new FileReader("/sdcard/" + userid + "/swingData"+ num + "/finishfeedback.txt"));
             finish_advice=buf7.readLine();
+            fscore=buf7.readLine();
             buf7.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

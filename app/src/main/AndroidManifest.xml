@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Golf"
+        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity android:name=".Error"></activity>

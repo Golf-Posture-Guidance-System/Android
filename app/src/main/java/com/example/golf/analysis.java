@@ -49,7 +49,8 @@ public class analysis extends AppCompatActivity {
     TransferUtility transferUtility;
     File f;
     String imagename, Sscore,userid, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2, worst;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2, worst, adressscore, takebackscore, topascore,
+            iascore, truascore, fscore, dscore ;
     FileOutputStream fos =null;
     ImageView imageView;
     TextView score, feedback;
@@ -65,6 +66,13 @@ public class analysis extends AppCompatActivity {
         feedback = (TextView) findViewById(R.id.comment);
         Intent intent = getIntent();
         userid = ((login)login.context_main).userid;
+        adressscore =  intent.getStringExtra("adressscore");
+        takebackscore =  intent.getStringExtra("takebackscore");
+        topascore = intent.getStringExtra("topascore");
+        dscore = intent.getStringExtra("dscore");
+        iascore = intent.getStringExtra("iascore");
+        truascore = intent.getStringExtra("truascore");
+        fscore = intent.getStringExtra("fscore");
         imagename =  intent.getStringExtra("imagename");
         Sscore =  intent.getStringExtra("score");
         chiken_wing = intent.getStringExtra("chiken_wing");
@@ -98,6 +106,14 @@ public class analysis extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(analysis.this,analysis_detail.class);
+                intent.putExtra("adressscore", adressscore);
+                intent.putExtra("takebackscore", takebackscore);
+                intent.putExtra("topascore", topascore);
+                intent.putExtra("dscore", dscore);
+                intent.putExtra("iascore", iascore);
+                intent.putExtra("truascore", truascore);
+                intent.putExtra("fscore", fscore);
+                intent.putExtra("imagename", imagename);
                 intent.putExtra("imagename", imagename);
                 intent.putExtra("score", Sscore);
                 intent.putExtra("add_advice1", add_advice1);
@@ -137,13 +153,13 @@ public class analysis extends AppCompatActivity {
     }
     public void analysisImage()
     {
-        score.setText(Sscore);
         f = new File("/sdcard/" + userid +"/image/" + imagename + worst + ".jpg");
         Bitmap myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
         imageView.setImageBitmap(myBitmap);
         if(worst.equals("0"))
         {
             feedback.setText(R.string.address);
+            score.setText(adressscore);
             feedback.append("\n\n");
             if(!add_advice1.equals(""))
                 feedback.append(add_advice1 + "\n\n");
@@ -155,6 +171,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("1"))
         {
             feedback.setText(R.string.takeAway);
+            score.setText(takebackscore);
             feedback.append("\n\n");
             if(!taway_advice.equals(""))
                 feedback.append(taway_advice);
@@ -162,6 +179,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("2"))
         {
             feedback.setText(R.string.top);
+            score.setText(topascore);
             feedback.append("\n\n");
             if(!top_advice1.equals(""))
                 feedback.append(top_advice1 + "\n\n");
@@ -177,6 +195,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("3"))
         {
             feedback.setText(R.string.down );
+            score.setText(dscore);
             feedback.append("\n\n");
             if(!down_advice.equals(""))
                 feedback.append(down_advice + "\n\n");
@@ -186,6 +205,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("4"))
         {
             feedback.setText(R.string.impact);
+            score.setText(iascore);
             feedback.append("\n\n");
             if(!imp_advice1.equals(""))
                 feedback.append(imp_advice1 + "\n\n");
@@ -197,6 +217,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("5"))
         {
             feedback.setText(R.string.followThru);
+            score.setText(truascore);
             feedback.append("\n\n");
             Log.d("asd",chiken_wing);
             if(!top_advice1.equals(""))
@@ -213,6 +234,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("6"))
         {
             feedback.setText(R.string.finish);
+            score.setText(fscore);
             feedback.append("\n\n");
             if(!finish_advice.equals(""))
                 feedback.append(finish_advice);
@@ -231,6 +253,14 @@ public class analysis extends AppCompatActivity {
                 if (items[item].equals("현재스윙 기록하기")) {
                     if (result) {
                         Intent intent = new Intent(analysis.this,PracticeNote.class);
+                        intent.putExtra("adressscore", adressscore);
+                        intent.putExtra("takebackscore", takebackscore);
+                        intent.putExtra("topascore", topascore);
+                        intent.putExtra("dscore", dscore);
+                        intent.putExtra("iascore", iascore);
+                        intent.putExtra("truascore", truascore);
+                        intent.putExtra("fscore", fscore);
+                        intent.putExtra("imagename", imagename);
                         intent.putExtra("imagename", imagename);
                         intent.putExtra("score", Sscore);
                         intent.putExtra("add_advice1", add_advice1);

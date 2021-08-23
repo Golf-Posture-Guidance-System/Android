@@ -26,18 +26,19 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     private ImageView pose_img;
     Intent intent;
     String userid,imagename,score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4 , down_advice2,worst;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4 , down_advice2,worst, adressscore, takebackscore, topascore,
+            iascore, truascore, fscore, dscore ;
     File f;
     Bitmap myBitmap;
     ImageView imageView;
-    private TextView address, takeAway, top, down, impact, followThru, finish;
+    private TextView address, takeAway, top, down, impact, followThru, finish, detailscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_detail);
-
         imageView = (ImageView)findViewById(R.id.poseimg);
+        detailscore = (TextView)findViewById(R.id.detailscore);
         address = (TextView)findViewById(R.id.commentText);
         takeAway = (TextView)findViewById(R.id.commentText);
         top = (TextView)findViewById(R.id.commentText);
@@ -49,6 +50,13 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         mainBtn = (Button)findViewById(R.id.backToMainBtn);
         intent = getIntent() ;
         userid = ((login)login.context_main).userid;
+        adressscore =  intent.getStringExtra("adressscore");
+        takebackscore =  intent.getStringExtra("takebackscore");
+        topascore = intent.getStringExtra("topascore");
+        dscore = intent.getStringExtra("dscore");
+        iascore = intent.getStringExtra("iascore");
+        truascore = intent.getStringExtra("truascore");
+        fscore = intent.getStringExtra("fscore");
         imagename =  intent.getStringExtra("imagename") ;
         score =  intent.getStringExtra("score");
         chiken_wing = intent.getStringExtra("chiken_wing");
@@ -77,11 +85,30 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
             poseBtn[i] = (Button) findViewById(RidBtn[i]);
             poseBtn[i].setOnClickListener(this);
         }
-
+        f = new File("/sdcard/" + userid + "/image/" + imagename + '0' + ".jpg");
+        myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
+        imageView.setImageBitmap(myBitmap);
+        address.setText(R.string.address);
+        detailscore.setText(adressscore);
+        address.append("\n\n");
+        if(!add_advice1.equals(""))
+            address.append(add_advice1 + "\n\n");
+        if(!add_advice2.equals(""))
+            address.append(add_advice2 + "\n\n");
+        if(!add_advice3.equals(""))
+            address.append(add_advice3);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(analysis_detail.this,analysis.class);
+                intent.putExtra("adressscore", adressscore);
+                intent.putExtra("takebackscore", takebackscore);
+                intent.putExtra("topascore", topascore);
+                intent.putExtra("dscore", dscore);
+                intent.putExtra("iascore", iascore);
+                intent.putExtra("truascore", truascore);
+                intent.putExtra("fscore", fscore);
+                intent.putExtra("imagename", imagename);
                 intent.putExtra("imagename", imagename);
                 intent.putExtra("score", score);
                 intent.putExtra("add_advice1", add_advice1);
@@ -126,6 +153,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 address.setText(R.string.address);
+                detailscore.setText(adressscore);
                 address.append("\n\n");
                 if(!add_advice1.equals(""))
                     address.append(add_advice1 + "\n\n");
@@ -139,6 +167,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 takeAway.setText(R.string.takeAway);
+                detailscore.setText(takebackscore);
                 takeAway.append("\n\n");
                 if(!taway_advice.equals(""))
                     takeAway.append(taway_advice);
@@ -148,6 +177,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 top.setText(R.string.top);
+                detailscore.setText(topascore);
                 top.append("\n\n");
                 if(!top_advice1.equals(""))
                     top.append(top_advice1 + "\n\n");
@@ -165,6 +195,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 down.setText(R.string.down );
+                detailscore.setText(dscore);
                 down.append("\n\n");
                 if(!down_advice.equals(""))
                     down.append(down_advice + "\n\n");
@@ -176,6 +207,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 impact.setText(R.string.impact);
+                detailscore.setText(iascore);
                 impact.append("\n\n");
                 if(!imp_advice1.equals(""))
                     impact.append(imp_advice1 + "\n\n");
@@ -189,6 +221,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 followThru.setText(R.string.followThru);
+                detailscore.setText(truascore);
                 followThru.append("\n\n");
                 Log.d("asd",chiken_wing);
                 if(!thu_advice1.equals(""))
@@ -207,6 +240,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 finish.setText(R.string.finish);
+                detailscore.setText(fscore);
                 finish.append("\n\n");
                 if(!finish_advice.equals(""))
                     finish.append(finish_advice);

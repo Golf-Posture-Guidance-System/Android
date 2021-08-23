@@ -64,7 +64,8 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     private String userChoosenTask;
     Uri VideoUri;
     String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, top_advice4, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2, worst;
+            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2, worst, adressscore, takebackscore, topascore, iascore, dscore
+            , truascore, fscore ;
     String error = "0";
     private Uri mImageUri;
     private int REQUEST_CAMERA;
@@ -211,9 +212,15 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void run() {
                             try {
-
                                 JSONObject jsonObject = new JSONObject(response.body().string());
                                 error = jsonObject.getString("error");
+                                adressscore = jsonObject.getString("adressscore");
+                                takebackscore = jsonObject.getString("takebackscore");
+                                topascore = jsonObject.getString("topascore");
+                                dscore = jsonObject.getString("dscore");
+                                iascore = jsonObject.getString("iascore");
+                                truascore = jsonObject.getString("truascore");
+                                fscore = jsonObject.getString("fscore");
                                 score = jsonObject.getString("score");
                                 chiken_wing = jsonObject.getString("chiken_wing");
                                 body_sway = jsonObject.getString("body_sway");
@@ -331,6 +338,13 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
             else if(requestCode == 123)
             {
                 Intent intent = new Intent(videoPreview.this,analysis.class);
+                intent.putExtra("adressscore", adressscore);
+                intent.putExtra("takebackscore", takebackscore);
+                intent.putExtra("topascore", topascore);
+                intent.putExtra("dscore", dscore);
+                intent.putExtra("iascore", iascore);
+                intent.putExtra("truascore", truascore);
+                intent.putExtra("fscore", fscore);
                 intent.putExtra("imagename", imagename);
                 intent.putExtra("score", score);
                 intent.putExtra("chiken_wing", chiken_wing);
