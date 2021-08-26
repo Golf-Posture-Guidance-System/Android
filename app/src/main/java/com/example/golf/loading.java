@@ -38,6 +38,6 @@ public class loading extends AppCompatActivity {
                     setResult(RESULT_OK);
                     finish();
                 }
-            }, 39000); //딜레이 타임 조절
+            }, 44000); //딜레이 타임 조절
         }
 }

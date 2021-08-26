@@ -165,7 +165,7 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                                 num++;
                             }
                         }
-                    }, 35000); //딜레이 타임 조절
+                    }, 40000); //딜레이 타임 조절
                     Intent intent = new Intent(videoPreview.this,loading.class);
                     startActivityForResult(intent,123);
                     break;
