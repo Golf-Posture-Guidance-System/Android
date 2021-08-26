@@ -166,8 +166,8 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             }
                         }
                     }, 35000); //딜레이 타임 조절
-                            Intent intent = new Intent(videoPreview.this,loading.class);
-                            startActivityForResult(intent,123);
+                    Intent intent = new Intent(videoPreview.this,loading.class);
+                    startActivityForResult(intent,123);
                     break;
                 }
 
@@ -190,66 +190,66 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure (Call call, IOException e){
-                    // Cancel the post on failure.
-                    call.cancel();
-                    Log.d("qweqwe", e.getMessage());
+            @Override
+            public void onFailure (Call call, IOException e){
+                // Cancel the post on failure.
+                call.cancel();
+                Log.d("qweqwe", e.getMessage());
 
-                    // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse (Call call,final Response response) throws IOException {
+                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().string());
+                            error = jsonObject.getString("error");
+                            adressscore = jsonObject.getString("adressscore");
+                            takebackscore = jsonObject.getString("takebackscore");
+                            topascore = jsonObject.getString("topascore");
+                            dscore = jsonObject.getString("dscore");
+                            iascore = jsonObject.getString("iascore");
+                            truascore = jsonObject.getString("truascore");
+                            fscore = jsonObject.getString("fscore");
+                            score = jsonObject.getString("score");
+                            chiken_wing = jsonObject.getString("chiken_wing");
+                            body_sway = jsonObject.getString("body_sway");
+                            finish_advice = jsonObject.getString("finish_advice");
+                            add_advice1 = jsonObject.getString("add_advice1");
+                            add_advice2 = jsonObject.getString("add_advice2");
+                            add_advice3 = jsonObject.getString("add_advice3");
+                            taway_advice = jsonObject.getString("taway_advice");
+                            top_advice1 = jsonObject.getString("top_advice1");
+                            top_advice2 = jsonObject.getString("top_advice2");
+                            top_advice3 = jsonObject.getString("top_advice3");
+                            top_advice4 = jsonObject.getString("top_advice4");
+                            down_advice = jsonObject.getString("down_advice");
+                            down_advice2 = jsonObject.getString("down_advice2");
+                            imp_advice1 = jsonObject.getString("imp_advice1");
+                            imp_advice2 = jsonObject.getString("imp_advice2");
+                            imp_advice3 = jsonObject.getString("imp_advice3");
+                            slice_advice = jsonObject.getString("slice_advice");
+                            thu_advice1 = jsonObject.getString("thu_advice1");
+                            thu_advice2 = jsonObject.getString("thu_advice2");
+                            thu_advice3 = jsonObject.getString("thu_advice3");
+                            worst = jsonObject.getString("worst");
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    });
-                }
-
-                @Override
-                public void onResponse (Call call,final Response response) throws IOException {
-                    // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response.body().string());
-                                error = jsonObject.getString("error");
-                                adressscore = jsonObject.getString("adressscore");
-                                takebackscore = jsonObject.getString("takebackscore");
-                                topascore = jsonObject.getString("topascore");
-                                dscore = jsonObject.getString("dscore");
-                                iascore = jsonObject.getString("iascore");
-                                truascore = jsonObject.getString("truascore");
-                                fscore = jsonObject.getString("fscore");
-                                score = jsonObject.getString("score");
-                                chiken_wing = jsonObject.getString("chiken_wing");
-                                body_sway = jsonObject.getString("body_sway");
-                                finish_advice = jsonObject.getString("finish_advice");
-                                add_advice1 = jsonObject.getString("add_advice1");
-                                add_advice2 = jsonObject.getString("add_advice2");
-                                add_advice3 = jsonObject.getString("add_advice3");
-                                taway_advice = jsonObject.getString("taway_advice");
-                                top_advice1 = jsonObject.getString("top_advice1");
-                                top_advice2 = jsonObject.getString("top_advice2");
-                                top_advice3 = jsonObject.getString("top_advice3");
-                                top_advice4 = jsonObject.getString("top_advice4");
-                                down_advice = jsonObject.getString("down_advice");
-                                down_advice2 = jsonObject.getString("down_advice2");
-                                imp_advice1 = jsonObject.getString("imp_advice1");
-                                imp_advice2 = jsonObject.getString("imp_advice2");
-                                imp_advice3 = jsonObject.getString("imp_advice3");
-                                slice_advice = jsonObject.getString("slice_advice");
-                                thu_advice1 = jsonObject.getString("thu_advice1");
-                                thu_advice2 = jsonObject.getString("thu_advice2");
-                                thu_advice3 = jsonObject.getString("thu_advice3");
-                                worst = jsonObject.getString("worst");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-            });
+                    }
+                });
+            }
+        });
 
     }
     private void selectImage() {
