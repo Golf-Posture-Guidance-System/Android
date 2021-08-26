@@ -200,6 +200,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                         mHandler.postDelayed(new Runnable()  {
                             public void run() {
                                 mediaRecorder.stop();
+                                tts.shutdown();
                                 Intent intent = new Intent();
                                 intent.putExtra("filepath", filepath);
                                 setResult(RESULT_OK, intent);
