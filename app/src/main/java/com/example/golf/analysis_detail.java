@@ -245,7 +245,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 detailscore.setText(fscore);
                 finish.append("\n\n");
                 if(!finish_advice1.equals(""))
-                    finish.append(finish_advice + "\n\n");
+                    finish.append(finish_advice1 + "\n\n");
                 if(!finish_advice2.equals(""))
                     finish.append(finish_advice2 + "\n\n");
                 if(!finish_advice3.equals(""))
