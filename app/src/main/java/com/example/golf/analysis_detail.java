@@ -25,9 +25,9 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
             R.id.Btn5,R.id.Btn6,R.id.Btn7};
     private ImageView pose_img;
     Intent intent;
-    String userid,imagename,score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4 , down_advice2,worst, adressscore, takebackscore, topascore,
-            iascore, truascore, fscore, dscore ;
+    String userid,imagename,score, add_advice1, add_advice2, add_advice3, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, top_advice5, down_advice, imp_advice1,
+            imp_advice2,imp_advice3, thu_advice1, thu_advice2, thu_advice3, thu_advice4, thu_advice5,top_advice4 , down_advice2,worst, adressscore, takebackscore, topascore,
+            iascore, truascore, fscore, dscore ,finish_advice1, finish_advice2, finish_advice3;
     File f;
     Bitmap myBitmap;
     ImageView imageView;
@@ -57,11 +57,8 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         iascore = intent.getStringExtra("iascore");
         truascore = intent.getStringExtra("truascore");
         fscore = intent.getStringExtra("fscore");
-        imagename =  intent.getStringExtra("imagename") ;
+        imagename =  intent.getStringExtra("imagename");
         score =  intent.getStringExtra("score");
-        chiken_wing = intent.getStringExtra("chiken_wing");
-        body_sway = intent.getStringExtra("body_sway");
-        finish_advice = intent.getStringExtra("finish_advice");
         add_advice1 = intent.getStringExtra("add_advice1");
         add_advice2 = intent.getStringExtra("add_advice2");
         add_advice3 = intent.getStringExtra("add_advice3");
@@ -70,15 +67,20 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         top_advice2 = intent.getStringExtra("top_advice2");
         top_advice3 = intent.getStringExtra("top_advice3");
         top_advice4 = intent.getStringExtra("top_advice4");
+        top_advice5 = intent.getStringExtra("top_advice5");
         down_advice = intent.getStringExtra("down_advice");
         down_advice2 = intent.getStringExtra("down_advice2");
         imp_advice1 = intent.getStringExtra("imp_advice1");
         imp_advice2 = intent.getStringExtra("imp_advice2");
         imp_advice3 = intent.getStringExtra("imp_advice3");
-        slice_advice = intent.getStringExtra("slice_advice");
         thu_advice1 = intent.getStringExtra("thu_advice1");
         thu_advice2 = intent.getStringExtra("thu_advice2");
         thu_advice3 = intent.getStringExtra("thu_advice3");
+        thu_advice4 = intent.getStringExtra("thu_advice4");
+        thu_advice5 = intent.getStringExtra("thu_advice5");
+        finish_advice1 = intent.getStringExtra("finish_advice1");
+        finish_advice2 = intent.getStringExtra("finish_advice2");
+        finish_advice3 = intent.getStringExtra("finish_advice3");
         worst = intent.getStringExtra("worst");
 
         for ( int i=0;i<7;i++) {
@@ -109,28 +111,29 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 intent.putExtra("truascore", truascore);
                 intent.putExtra("fscore", fscore);
                 intent.putExtra("imagename", imagename);
-                intent.putExtra("imagename", imagename);
                 intent.putExtra("score", score);
                 intent.putExtra("add_advice1", add_advice1);
                 intent.putExtra("add_advice2", add_advice2);
                 intent.putExtra("add_advice3", add_advice3);
-                intent.putExtra("chiken_wing", chiken_wing);
-                intent.putExtra("body_sway", body_sway);
-                intent.putExtra("finish_advice", finish_advice);
                 intent.putExtra("taway_advice", taway_advice);
                 intent.putExtra("top_advice1", top_advice1);
                 intent.putExtra("top_advice2", top_advice2);
                 intent.putExtra("top_advice3", top_advice3);
                 intent.putExtra("top_advice4", top_advice4);
+                intent.putExtra("top_advice5", top_advice5);
                 intent.putExtra("down_advice", down_advice);
                 intent.putExtra("down_advice2", down_advice2);
                 intent.putExtra("imp_advice1", imp_advice1);
                 intent.putExtra("imp_advice2", imp_advice2);
                 intent.putExtra("imp_advice3", imp_advice3);
-                intent.putExtra("slice_advice", slice_advice);
                 intent.putExtra("thu_advice1", thu_advice1);
                 intent.putExtra("thu_advice2", thu_advice2);
                 intent.putExtra("thu_advice3", thu_advice3);
+                intent.putExtra("thu_advice4", thu_advice4);
+                intent.putExtra("thu_advice5", thu_advice5);
+                intent.putExtra("finish_advice1", finish_advice1);
+                intent.putExtra("finish_advice2", finish_advice2);
+                intent.putExtra("finish_advice3", finish_advice3);
                 intent.putExtra("worst", worst);
                 startActivity(intent);
                 finish();
@@ -187,8 +190,8 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                     top.append(top_advice3 + "\n\n");
                 if(!top_advice4.equals(""))
                     top.append(top_advice4 + "\n\n");
-                if(!slice_advice.equals(""))
-                    top.append(slice_advice);
+                if(!top_advice5.equals(""))
+                    top.append(top_advice5);
                 break;
             case R.id.Btn4:
                 f = new File("/sdcard/" + userid + "/image/" +imagename + '3' + ".jpg");
@@ -223,17 +226,16 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 followThru.setText(R.string.followThru);
                 detailscore.setText(truascore);
                 followThru.append("\n\n");
-                Log.d("asd",chiken_wing);
                 if(!thu_advice1.equals(""))
                     followThru.append(thu_advice1 + "\n\n");
                 if(!thu_advice2.equals(""))
                     followThru.append(thu_advice2 + "\n\n");
                 if(!thu_advice3.equals(""))
                     followThru.append(thu_advice3 + "\n\n");
-                if(!chiken_wing.equals(""))
-                    followThru.append(chiken_wing + "\n\n");
-                if(!body_sway.equals(""))
-                    followThru.append(body_sway);
+                if(!thu_advice4.equals(""))
+                    followThru.append(thu_advice4 + "\n\n");
+                if(!thu_advice5.equals(""))
+                    followThru.append(thu_advice5);
                 break;
             case R.id.Btn7:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '6' + ".jpg");
@@ -242,8 +244,12 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 finish.setText(R.string.finish);
                 detailscore.setText(fscore);
                 finish.append("\n\n");
-                if(!finish_advice.equals(""))
-                    finish.append(finish_advice);
+                if(!finish_advice1.equals(""))
+                    finish.append(finish_advice + "\n\n");
+                if(!finish_advice2.equals(""))
+                    finish.append(finish_advice2 + "\n\n");
+                if(!finish_advice3.equals(""))
+                    finish.append(finish_advice3);
                 break;
         }
     }

@@ -48,9 +48,9 @@ public class analysis extends AppCompatActivity {
     ImageButton backBtn;
     TransferUtility transferUtility;
     File f;
-    String imagename, Sscore,userid, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, top_advice4, down_advice2, worst, adressscore, takebackscore, topascore,
-            iascore, truascore, fscore, dscore ;
+    String imagename, Sscore,userid, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3,top_advice5, down_advice, imp_advice1,
+            imp_advice2, imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, thu_advice4, thu_advice5,chiken_wing, top_advice4, down_advice2, worst, adressscore, takebackscore, topascore,
+            iascore, truascore, fscore, dscore , finish_advice1, finish_advice2, finish_advice3;
     FileOutputStream fos =null;
     ImageView imageView;
     TextView score, feedback;
@@ -75,9 +75,6 @@ public class analysis extends AppCompatActivity {
         fscore = intent.getStringExtra("fscore");
         imagename =  intent.getStringExtra("imagename");
         Sscore =  intent.getStringExtra("score");
-        chiken_wing = intent.getStringExtra("chiken_wing");
-        body_sway = intent.getStringExtra("body_sway");
-        finish_advice = intent.getStringExtra("finish_advice");
         add_advice1 = intent.getStringExtra("add_advice1");
         add_advice2 = intent.getStringExtra("add_advice2");
         add_advice3 = intent.getStringExtra("add_advice3");
@@ -86,15 +83,20 @@ public class analysis extends AppCompatActivity {
         top_advice2 = intent.getStringExtra("top_advice2");
         top_advice3 = intent.getStringExtra("top_advice3");
         top_advice4 = intent.getStringExtra("top_advice4");
+        top_advice5 = intent.getStringExtra("top_advice5");
         down_advice = intent.getStringExtra("down_advice");
         down_advice2 = intent.getStringExtra("down_advice2");
         imp_advice1 = intent.getStringExtra("imp_advice1");
         imp_advice2 = intent.getStringExtra("imp_advice2");
         imp_advice3 = intent.getStringExtra("imp_advice3");
-        slice_advice = intent.getStringExtra("slice_advice");
         thu_advice1 = intent.getStringExtra("thu_advice1");
         thu_advice2 = intent.getStringExtra("thu_advice2");
         thu_advice3 = intent.getStringExtra("thu_advice3");
+        thu_advice4 = intent.getStringExtra("thu_advice4");
+        thu_advice5 = intent.getStringExtra("thu_advice5");
+        finish_advice1 = intent.getStringExtra("finish_advice1");
+        finish_advice2 = intent.getStringExtra("finish_advice2");
+        finish_advice3 = intent.getStringExtra("finish_advice3");
         worst = intent.getStringExtra("worst");
         pracBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -114,28 +116,29 @@ public class analysis extends AppCompatActivity {
                 intent.putExtra("truascore", truascore);
                 intent.putExtra("fscore", fscore);
                 intent.putExtra("imagename", imagename);
-                intent.putExtra("imagename", imagename);
                 intent.putExtra("score", Sscore);
                 intent.putExtra("add_advice1", add_advice1);
                 intent.putExtra("add_advice2", add_advice2);
                 intent.putExtra("add_advice3", add_advice3);
-                intent.putExtra("chiken_wing", chiken_wing);
-                intent.putExtra("body_sway", body_sway);
-                intent.putExtra("finish_advice", finish_advice);
                 intent.putExtra("taway_advice", taway_advice);
                 intent.putExtra("top_advice1", top_advice1);
                 intent.putExtra("top_advice2", top_advice2);
                 intent.putExtra("top_advice3", top_advice3);
                 intent.putExtra("top_advice4", top_advice4);
+                intent.putExtra("top_advice5", top_advice5);
                 intent.putExtra("down_advice", down_advice);
                 intent.putExtra("down_advice2", down_advice2);
                 intent.putExtra("imp_advice1", imp_advice1);
                 intent.putExtra("imp_advice2", imp_advice2);
                 intent.putExtra("imp_advice3", imp_advice3);
-                intent.putExtra("slice_advice", slice_advice);
                 intent.putExtra("thu_advice1", thu_advice1);
                 intent.putExtra("thu_advice2", thu_advice2);
                 intent.putExtra("thu_advice3", thu_advice3);
+                intent.putExtra("thu_advice4", thu_advice4);
+                intent.putExtra("thu_advice5", thu_advice5);
+                intent.putExtra("finish_advice1", finish_advice1);
+                intent.putExtra("finish_advice2", finish_advice2);
+                intent.putExtra("finish_advice3", finish_advice3);
                 intent.putExtra("worst", worst);
                 startActivity(intent);
                 finish();
@@ -189,8 +192,8 @@ public class analysis extends AppCompatActivity {
                 feedback.append(top_advice3 + "\n\n");
             if(!top_advice4.equals(""))
                 feedback.append(top_advice4 + "\n\n");
-            if(!slice_advice.equals(""))
-                feedback.append(slice_advice);
+            if(!top_advice5.equals(""))
+                feedback.append(top_advice5);
         }
         if(worst.equals("3"))
         {
@@ -219,17 +222,16 @@ public class analysis extends AppCompatActivity {
             feedback.setText(R.string.followThru);
             score.setText(Sscore);
             feedback.append("\n\n");
-            Log.d("asd",chiken_wing);
             if(!top_advice1.equals(""))
                 feedback.append(thu_advice1 + "\n\n");
             if(!top_advice2.equals(""))
                 feedback.append(thu_advice2 + "\n\n");
             if(!top_advice3.equals(""))
                 feedback.append(thu_advice3 + "\n\n");
-            if(!chiken_wing.equals(""))
-                feedback.append(chiken_wing + "\n\n");
-            if(!body_sway.equals(""))
-                feedback.append(body_sway);
+            if(!top_advice2.equals(""))
+                feedback.append(thu_advice4 + "\n\n");
+            if(!top_advice3.equals(""))
+                feedback.append(thu_advice5 + "\n\n");
         }
         if(worst.equals("6"))
         {
@@ -261,28 +263,29 @@ public class analysis extends AppCompatActivity {
                         intent.putExtra("truascore", truascore);
                         intent.putExtra("fscore", fscore);
                         intent.putExtra("imagename", imagename);
-                        intent.putExtra("imagename", imagename);
                         intent.putExtra("score", Sscore);
                         intent.putExtra("add_advice1", add_advice1);
                         intent.putExtra("add_advice2", add_advice2);
                         intent.putExtra("add_advice3", add_advice3);
-                        intent.putExtra("chiken_wing", chiken_wing);
-                        intent.putExtra("body_sway", body_sway);
-                        intent.putExtra("finish_advice", finish_advice);
                         intent.putExtra("taway_advice", taway_advice);
                         intent.putExtra("top_advice1", top_advice1);
                         intent.putExtra("top_advice2", top_advice2);
                         intent.putExtra("top_advice3", top_advice3);
                         intent.putExtra("top_advice4", top_advice4);
+                        intent.putExtra("top_advice5", top_advice5);
                         intent.putExtra("down_advice", down_advice);
                         intent.putExtra("down_advice2", down_advice2);
                         intent.putExtra("imp_advice1", imp_advice1);
                         intent.putExtra("imp_advice2", imp_advice2);
                         intent.putExtra("imp_advice3", imp_advice3);
-                        intent.putExtra("slice_advice", slice_advice);
                         intent.putExtra("thu_advice1", thu_advice1);
                         intent.putExtra("thu_advice2", thu_advice2);
                         intent.putExtra("thu_advice3", thu_advice3);
+                        intent.putExtra("thu_advice4", thu_advice4);
+                        intent.putExtra("thu_advice5", thu_advice5);
+                        intent.putExtra("finish_advice1", finish_advice1);
+                        intent.putExtra("finish_advice2", finish_advice2);
+                        intent.putExtra("finish_advice3", finish_advice3);
                         intent.putExtra("worst", worst);
                         startActivity(intent);
                         finish();

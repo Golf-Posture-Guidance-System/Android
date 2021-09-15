@@ -104,6 +104,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
                             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
                             mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
                             mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_720P));
+                            mediaRecorder.setOrientationHint(90);
                             mediaRecorder.setOutputFile(filepath);
                             mediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
                             mediaRecorder.prepare();
@@ -141,6 +142,7 @@ public class swing_record extends AppCompatActivity implements SurfaceHolder.Cal
     };
     public  void media() {
         camera = android.hardware.Camera.open();
+        camera.setDisplayOrientation(90);
         Camera.Parameters params = camera.getParameters();
         params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         camera.setParameters(params);

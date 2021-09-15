@@ -63,9 +63,9 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
     File f1;
     private String userChoosenTask;
     Uri VideoUri;
-    String videopath, score, add_advice1, add_advice2, add_advice3, body_sway, taway_advice, finish_advice, top_advice1, top_advice2, top_advice3, top_advice4, down_advice, imp_advice1,
-            imp_advice2,imp_advice3 , slice_advice, thu_advice1, thu_advice2, thu_advice3, chiken_wing, down_advice2, worst, adressscore, takebackscore, topascore, iascore, dscore
-            , truascore, fscore ;
+    String videopath, score, add_advice1, add_advice2, add_advice3, taway_advice, top_advice1, top_advice2, top_advice3, top_advice4, top_advice5, down_advice,
+            imp_advice1, imp_advice2,imp_advice3, thu_advice1, thu_advice2, thu_advice3, thu_advice4, thu_advice5,down_advice2, worst, adressscore, takebackscore, topascore, iascore,
+            dscore, truascore, fscore, finish_advice1, finish_advice2, finish_advice3;
     String error = "0";
     private Uri mImageUri;
     private int REQUEST_CAMERA;
@@ -222,9 +222,6 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             truascore = jsonObject.getString("truascore");
                             fscore = jsonObject.getString("fscore");
                             score = jsonObject.getString("score");
-                            chiken_wing = jsonObject.getString("chiken_wing");
-                            body_sway = jsonObject.getString("body_sway");
-                            finish_advice = jsonObject.getString("finish_advice");
                             add_advice1 = jsonObject.getString("add_advice1");
                             add_advice2 = jsonObject.getString("add_advice2");
                             add_advice3 = jsonObject.getString("add_advice3");
@@ -233,15 +230,20 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                             top_advice2 = jsonObject.getString("top_advice2");
                             top_advice3 = jsonObject.getString("top_advice3");
                             top_advice4 = jsonObject.getString("top_advice4");
+                            top_advice5 = jsonObject.getString("top_advice5");
                             down_advice = jsonObject.getString("down_advice");
                             down_advice2 = jsonObject.getString("down_advice2");
                             imp_advice1 = jsonObject.getString("imp_advice1");
                             imp_advice2 = jsonObject.getString("imp_advice2");
                             imp_advice3 = jsonObject.getString("imp_advice3");
-                            slice_advice = jsonObject.getString("slice_advice");
                             thu_advice1 = jsonObject.getString("thu_advice1");
                             thu_advice2 = jsonObject.getString("thu_advice2");
                             thu_advice3 = jsonObject.getString("thu_advice3");
+                            thu_advice4 = jsonObject.getString("thu_advice4");
+                            thu_advice5 = jsonObject.getString("thu_advice5");
+                            finish_advice1 = jsonObject.getString("finish_advice1");
+                            finish_advice2 = jsonObject.getString("finish_advice2");
+                            finish_advice3 = jsonObject.getString("finish_advice3");
                             worst = jsonObject.getString("worst");
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -347,9 +349,6 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("fscore", fscore);
                 intent.putExtra("imagename", imagename);
                 intent.putExtra("score", score);
-                intent.putExtra("chiken_wing", chiken_wing);
-                intent.putExtra("body_sway", body_sway);
-                intent.putExtra("finish_advice", finish_advice);
                 intent.putExtra("add_advice1", add_advice1);
                 intent.putExtra("add_advice2", add_advice2);
                 intent.putExtra("add_advice3", add_advice3);
@@ -358,15 +357,20 @@ public class videoPreview extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("top_advice2", top_advice2);
                 intent.putExtra("top_advice3", top_advice3);
                 intent.putExtra("top_advice4", top_advice4);
+                intent.putExtra("top_advice5", top_advice5);
                 intent.putExtra("down_advice", down_advice);
                 intent.putExtra("down_advice2", down_advice2);
                 intent.putExtra("imp_advice1", imp_advice1);
                 intent.putExtra("imp_advice2", imp_advice2);
                 intent.putExtra("imp_advice3", imp_advice3);
-                intent.putExtra("slice_advice", slice_advice);
                 intent.putExtra("thu_advice1", thu_advice1);
                 intent.putExtra("thu_advice2", thu_advice2);
                 intent.putExtra("thu_advice3", thu_advice3);
+                intent.putExtra("thu_advice4", thu_advice4);
+                intent.putExtra("thu_advice5", thu_advice5);
+                intent.putExtra("finish_advice1", finish_advice1);
+                intent.putExtra("finish_advice2", finish_advice2);
+                intent.putExtra("finish_advice3", finish_advice3);
                 intent.putExtra("worst", worst);
                 startActivity(intent);
                 finish();
