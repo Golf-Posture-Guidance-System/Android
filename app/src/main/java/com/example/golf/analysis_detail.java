@@ -31,7 +31,7 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
     File f;
     Bitmap myBitmap;
     ImageView imageView;
-    private TextView address, takeAway, top, down, impact, followThru, finish, detailscore;
+    private TextView address, takeAway, top, down, impact, followThru, finish, addFeed, takeFeed, topFeed, downFeed, impactFeed, truFeed, finFeed,detailscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,19 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         impact = (TextView)findViewById(R.id.commentText);
         followThru = (TextView)findViewById(R.id.commentText);
         finish = (TextView)findViewById(R.id.commentText);
+
+        addFeed = (TextView)findViewById(R.id.feedback);
+        takeFeed = (TextView)findViewById(R.id.feedback);
+        topFeed = (TextView)findViewById(R.id.feedback);
+        downFeed = (TextView)findViewById(R.id.feedback);
+        impactFeed = (TextView)findViewById(R.id.feedback);
+        truFeed = (TextView)findViewById(R.id.feedback);
+        finFeed = (TextView)findViewById(R.id.feedback);
+
         backBtn = (Button)findViewById(R.id.backBtn);
         mainBtn = (Button)findViewById(R.id.backToMainBtn);
+
+
         intent = getIntent() ;
         userid = ((login)login.context_main).userid;
         adressscore =  intent.getStringExtra("adressscore");
@@ -91,14 +102,14 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
         myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
         imageView.setImageBitmap(myBitmap);
         address.setText(R.string.address);
-        detailscore.setText(adressscore);
-        address.append("\n\n");
+        detailscore.setText(adressscore + "점");
+        addFeed.setText("");
         if(!add_advice1.equals(""))
-            address.append(add_advice1 + "\n\n");
+            addFeed.append(add_advice1 + "\n\n");
         if(!add_advice2.equals(""))
-            address.append(add_advice2 + "\n\n");
+            addFeed.append(add_advice2 + "\n\n");
         if(!add_advice3.equals(""))
-            address.append(add_advice3);
+            addFeed.append(add_advice3);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,100 +167,100 @@ public class analysis_detail extends AppCompatActivity implements View.OnClickLi
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 address.setText(R.string.address);
-                detailscore.setText(adressscore);
-                address.append("\n\n");
+                detailscore.setText(adressscore + "점");
+                addFeed.setText("");
                 if(!add_advice1.equals(""))
-                    address.append(add_advice1 + "\n\n");
+                    addFeed.append(add_advice1 + "\n\n");
                 if(!add_advice2.equals(""))
-                    address.append(add_advice2 + "\n\n");
+                    addFeed.append(add_advice2 + "\n\n");
                 if(!add_advice3.equals(""))
-                    address.append(add_advice3);
+                    addFeed.append(add_advice3);
                 break;
             case R.id.Btn2:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '1' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 takeAway.setText(R.string.takeAway);
-                detailscore.setText(takebackscore);
-                takeAway.append("\n\n");
+                detailscore.setText(takebackscore + "점");
+                takeFeed.setText("");
                 if(!taway_advice.equals(""))
-                    takeAway.append(taway_advice);
+                    takeFeed.append(taway_advice);
                 break;
             case R.id.Btn3:
                 f = new File("/sdcard/" + userid + "/image/" +imagename + '2' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 top.setText(R.string.top);
-                detailscore.setText(topascore);
-                top.append("\n\n");
+                detailscore.setText(topascore + "점");
+                topFeed.setText("");
                 if(!top_advice1.equals(""))
-                    top.append(top_advice1 + "\n\n");
+                    topFeed.append(top_advice1 + "\n\n");
                 if(!top_advice2.equals(""))
-                    top.append(top_advice2 + "\n\n");
+                    topFeed.append(top_advice2 + "\n\n");
                 if(!top_advice3.equals(""))
-                    top.append(top_advice3 + "\n\n");
+                    topFeed.append(top_advice3 + "\n\n");
                 if(!top_advice4.equals(""))
-                    top.append(top_advice4 + "\n\n");
+                    topFeed.append(top_advice4 + "\n\n");
                 if(!top_advice5.equals(""))
-                    top.append(top_advice5);
+                    topFeed.append(top_advice5);
                 break;
             case R.id.Btn4:
                 f = new File("/sdcard/" + userid + "/image/" +imagename + '3' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 down.setText(R.string.down );
-                detailscore.setText(dscore);
-                down.append("\n\n");
+                detailscore.setText(dscore + "점");
+                downFeed.setText("");
                 if(!down_advice.equals(""))
-                    down.append(down_advice + "\n\n");
+                    downFeed.append(down_advice + "\n\n");
                 if(!down_advice2.equals(""))
-                    down.append(down_advice2);
+                    downFeed.append(down_advice2);
                 break;
             case R.id.Btn5:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '4' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 impact.setText(R.string.impact);
-                detailscore.setText(iascore);
-                impact.append("\n\n");
+                detailscore.setText(iascore + "점");
+                impactFeed.setText("");
                 if(!imp_advice1.equals(""))
-                    impact.append(imp_advice1 + "\n\n");
+                    impactFeed.append(imp_advice1 + "\n\n");
                 if(!imp_advice2.equals(""))
-                    impact.append(imp_advice2 + "\n\n");
+                    impactFeed.append(imp_advice2 + "\n\n");
                 if(!imp_advice3.equals(""))
-                    impact.append(imp_advice3);
+                    impactFeed.append(imp_advice3);
                 break;
             case R.id.Btn6:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '5' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 followThru.setText(R.string.followThru);
-                detailscore.setText(truascore);
-                followThru.append("\n\n");
+                detailscore.setText(truascore + "점");
+                truFeed.setText("");
                 if(!thu_advice1.equals(""))
-                    followThru.append(thu_advice1 + "\n\n");
+                    truFeed.append(thu_advice1 + "\n\n");
                 if(!thu_advice2.equals(""))
-                    followThru.append(thu_advice2 + "\n\n");
+                    truFeed.append(thu_advice2 + "\n\n");
                 if(!thu_advice3.equals(""))
-                    followThru.append(thu_advice3 + "\n\n");
+                    truFeed.append(thu_advice3 + "\n\n");
                 if(!thu_advice4.equals(""))
-                    followThru.append(thu_advice4 + "\n\n");
+                    truFeed.append(thu_advice4 + "\n\n");
                 if(!thu_advice5.equals(""))
-                    followThru.append(thu_advice5);
+                    truFeed.append(thu_advice5);
                 break;
             case R.id.Btn7:
                 f = new File("/sdcard/" + userid + "/image/" + imagename + '6' + ".jpg");
                 myBitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
                 imageView.setImageBitmap(myBitmap);
                 finish.setText(R.string.finish);
-                detailscore.setText(fscore);
-                finish.append("\n\n");
+                detailscore.setText(fscore + "점");
+                finFeed.setText("");
                 if(!finish_advice1.equals(""))
-                    finish.append(finish_advice1 + "\n\n");
+                    finFeed.append(finish_advice1 + "\n\n");
                 if(!finish_advice2.equals(""))
-                    finish.append(finish_advice2 + "\n\n");
+                    finFeed.append(finish_advice2 + "\n\n");
                 if(!finish_advice3.equals(""))
-                    finish.append(finish_advice3);
+                    finFeed.append(finish_advice3);
                 break;
         }
     }

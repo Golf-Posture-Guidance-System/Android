@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
@@ -16,10 +17,14 @@ import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
 import java.io.File;
 
 public class loading extends AppCompatActivity {
-    TextView point;
+    TextView percent;
     ImageView loading;
     AnimationDrawable animation;
+    ProgressBar bar;
     String error;
+    private Handler hdlr;
+    private int i, max;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,7 @@ public class loading extends AppCompatActivity {
         animation.addFrame(getResources().getDrawable(R.drawable.ic_loading2),500);
         loading.setImageDrawable(animation);
         animation.start();
+        i = bar.getProgress();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -39,5 +45,8 @@ public class loading extends AppCompatActivity {
                     finish();
                 }
             }, 44000); //딜레이 타임 조절
+
+
+
         }
 }

@@ -80,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <FrameLayout
             android:paddingTop="20dp"
             android:id="@+id/golfTip"
             android:layout_width="match_parent"
@@ -91,45 +91,79 @@
             >
 
             <ImageView
-                android:layout_marginBottom="50dp"
-                android:id="@+id/poseimg"
-                android:layout_width="300dp"
-                android:layout_height="320dp"
-                android:background="@drawable/golf_image_border"/>
+                android:id="@+id/background"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_card_list_group_1"/>
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/poseimg"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_width="250dp"
+                    android:layout_height="270dp"
+                    android:background="@drawable/golf_image_border"/>
 
             <TextView
-                android:layout_marginTop="-20dp"
+                android:layout_below="@+id/poseimg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
                 android:id="@+id/commentText"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/onyx"
-                android:textSize="18sp"
+                android:padding="10dp"
+                android:textColor="#5961F9"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:background="@drawable/tipbackground"
                 android:text="@string/tip"/>
-            <FrameLayout
-                android:layout_width="match_parent"
+
+
+
+            <TextView
+                android:id="@+id/detailscore"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/scorecircle"
+                android:layout_alignParentRight="true"
+                android:layout_above="@+id/commentText"
+                android:layout_marginBottom="-30dp"
+                android:layout_marginRight="35dp"
+                android:text="65점"
+                android:gravity="center"
+                android:textColor="@color/onyx"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                />
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/commentText"
+                android:id="@+id/feedback"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp">
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="70dp"
+                android:textSize="16sp"/>
 
-                <TextView
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
-                    android:textSize="27sp"
-                    android:textColor="@color/green"
-                    android:text="Score : "/>
 
-                <TextView
-                    android:id="@+id/detailscore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="145dp"
-                    android:text="80"
-                    android:textColor="@color/green"
-                    android:textSize="27sp"
-                    android:textStyle="bold" />
+            </RelativeLayout>
 
-            </FrameLayout>
+
+
             <LinearLayout
                 android:padding="10dp"
                 android:layout_marginTop="30dp"
@@ -157,7 +191,7 @@
                     />
             </LinearLayout>
 
-        </LinearLayout>
+        </FrameLayout>
 
     </ScrollView>
 
