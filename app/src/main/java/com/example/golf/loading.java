@@ -36,7 +36,6 @@ public class loading extends AppCompatActivity {
         animation.addFrame(getResources().getDrawable(R.drawable.ic_loading2),500);
         loading.setImageDrawable(animation);
         animation.start();
-        i = bar.getProgress();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override

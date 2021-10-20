@@ -162,7 +162,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("0"))
         {
             feedback.setText(R.string.address);
-            score.setText(Sscore);
+            score.setText(Sscore + "점");
             feedback.append("\n\n");
             if(!add_advice1.equals(""))
                 feedback.append(add_advice1 + "\n\n");
@@ -174,7 +174,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("1"))
         {
             feedback.setText(R.string.takeAway);
-            score.setText(Sscore);
+            score.setText(Sscore+ "점");
             feedback.append("\n\n");
             if(!taway_advice.equals(""))
                 feedback.append(taway_advice);
@@ -182,7 +182,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("2"))
         {
             feedback.setText(R.string.top);
-            score.setText(Sscore);
+            score.setText(Sscore+ "점");
             feedback.append("\n\n");
             if(!top_advice1.equals(""))
                 feedback.append(top_advice1 + "\n\n");
@@ -198,7 +198,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("3"))
         {
             feedback.setText(R.string.down );
-            score.setText(Sscore);
+            score.setText(Sscore+ "점");
             feedback.append("\n\n");
             if(!down_advice.equals(""))
                 feedback.append(down_advice + "\n\n");
@@ -208,7 +208,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("4"))
         {
             feedback.setText(R.string.impact);
-            score.setText(Sscore);
+            score.setText(Sscore+ "점");
             feedback.append("\n\n");
             if(!imp_advice1.equals(""))
                 feedback.append(imp_advice1 + "\n\n");
@@ -220,7 +220,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("5"))
         {
             feedback.setText(R.string.followThru);
-            score.setText(Sscore);
+            score.setText(Sscore+ "점");
             feedback.append("\n\n");
             if(!top_advice1.equals(""))
                 feedback.append(thu_advice1 + "\n\n");
@@ -236,7 +236,7 @@ public class analysis extends AppCompatActivity {
         if(worst.equals("6"))
         {
             feedback.setText(R.string.finish);
-            score.setText(Sscore);
+            score.setText(Sscore+ "점");
             feedback.append("\n\n");
             if(!finish_advice.equals(""))
                 feedback.append(finish_advice);
